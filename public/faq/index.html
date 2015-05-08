@@ -46,6 +46,10 @@
 </li>
 
 <li>
+<a href="#">Why not wrap the go tool ?</a>
+</li>
+
+<li>
 <a href="#">Your project is crap! Why would you do this ?</a>
 </li>
 
@@ -65,6 +69,20 @@
 <p>Because gb is focused on a project workflow, not a package or file workflow; most of the time you are building or testing your project (see digression in #49 ) I felt I could make things simpler and more consistent by not supporting <code>gb run</code> at all.</p>
 
 <p><a href="https://github.com/constabulary/gb/issues/51">See also issue 51</a>.</p>
+
+
+<h2 id="">Why not wrap the go tool ?</h2>
+<p>I think the fact that gb does not just wrap the go tool is one if its distinguishing features.</p>
+
+<p>Technically there is nothing that gb does that couldn&rsquo;t be done with a shell script. In fact several tools have been proposed over the last few years that do just this, with the exception of Keith Rarik&rsquo;s godep, all have been completely overlooked by the market.</p>
+
+<p>Why is this? Well probably for one, Go programmers want to use tools written in Go. This seems like a bizarre statement, but it&rsquo;s true, not just for Go programmers, but pretty much most programming communities.</p>
+
+<p>The second reason is, while you can construct an equivalent line of shell to mimick what gb does, generalising that with $PROJECT detection from you working directory and handling the case you may be several levels deep what was a one line shell script becomes a rather complicated shell script, which adds further weight to programmers not wanting to use a tool not written in their language. Then let&rsquo;s talk about Windows compatibility &hellip;</p>
+
+<p>I think there is also value in convention. I chose vendor/src arbitrarily because that&rsquo;s what it was called in Rails. Without this convention people would use 3pp, external, etc, ie everyone would come up with their own naming convention, and suddenly your not talking one shell script, but one shell script per project, along with various configuration flags, etc.</p>
+
+<p>So, what does gb do ? Nothing that you couldn&rsquo;t do by hand. But people don&rsquo;t want to do things by hand, hence gb.</p>
 
 
 <h2 id="">Your project is crap! Why would you do this ?</h2>
@@ -91,9 +109,13 @@
           <p> docs </p>
                 <ul>
                 
+                    <li hugo-nav="/docs/editors/"><a href="http://localhost:1313/docs/editors/"> Editor support </a> </li>
+                
                     <li hugo-nav="/docs/install/"><a href="http://localhost:1313/docs/install/"> Installation </a> </li>
                 
                     <li hugo-nav="/docs/project/"><a href="http://localhost:1313/docs/project/"> Project </a> </li>
+                
+                    <li hugo-nav="/docs/tools/"><a href="http://localhost:1313/docs/tools/"> Tools </a> </li>
                 
                     <li hugo-nav="/docs/usage/"><a href="http://localhost:1313/docs/usage/"> Usage </a> </li>
                 

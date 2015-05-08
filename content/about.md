@@ -23,10 +23,10 @@ categories = [ "design" ]
 
 Installing, or upgrading *gb* is super simple (assuming you've already got Go installed)
 
-    go get -u github.com/constabulary/gb/...
+    go get github.com/constabulary/gb/...
 
 [Read more about installing and using gb](/docs/install).
 
 ## Next up
 
-Now you've got gb installed, move on the to [getting started](/docs/getting-started)
+Now you've got gb installed, move on the to [setting up a gb project](/docs/project).

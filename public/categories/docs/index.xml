@@ -9,6 +9,20 @@
     <atom:link href="http://localhost:1313/categories/docs/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Editor support</title>
+      <link>http://localhost:1313/docs/editors/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/editors/</guid>
+      <description>
+
+&lt;h1 id=&#34;editor-support:1ad680f00cfb747afb5bde284957f8f2&#34;&gt;Editor support&lt;/h1&gt;
+
+&lt;p&gt;TODO(dfc) document how to configure popular editors and IDEs to support gb projects.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Installation</title>
       <link>http://localhost:1313/docs/install/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -73,6 +87,20 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;em&gt;gb&lt;/em&gt; makes a distinction between your code and vendored code. &lt;em&gt;gb&lt;/em&gt; can build and test your code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tools</title>
+      <link>http://localhost:1313/docs/tools/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/tools/</guid>
+      <description>
+
+&lt;h1 id=&#34;tool-suoport:392b1cfe5865fa09a3eb545085be9682&#34;&gt;Tool suoport&lt;/h1&gt;
+
+&lt;p&gt;TODO(dfc) document how to use tools like goimports and the go oracle with gb projects.&lt;/p&gt;
 </description>
     </item>
     

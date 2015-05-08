@@ -39,14 +39,14 @@
 
 &lt;p&gt;Installing, or upgrading &lt;em&gt;gb&lt;/em&gt; is super simple (assuming you&amp;rsquo;ve already got Go installed)&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;go get -u github.com/constabulary/gb/...
+&lt;pre&gt;&lt;code&gt;go get github.com/constabulary/gb/...
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://localhost:1313/docs/install&#34;&gt;Read more about installing and using gb&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;next-up:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Next up&lt;/h2&gt;
 
-&lt;p&gt;Now you&amp;rsquo;ve got gb installed, move on the to &lt;a href=&#34;http://localhost:1313/docs/getting-started&#34;&gt;getting started&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Now you&amp;rsquo;ve got gb installed, move on the to &lt;a href=&#34;http://localhost:1313/docs/project&#34;&gt;setting up a gb project&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     

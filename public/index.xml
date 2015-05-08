@@ -162,7 +162,7 @@
     </item>
     
     <item>
-      <title></title>
+      <title>Background</title>
       <link>http://localhost:1313/docs/background/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -185,109 +185,6 @@
 &lt;li&gt;A project supports multiple locations for source code, at the moment &lt;code&gt;src/&lt;/code&gt; for your source code, and &lt;code&gt;vendor/src/&lt;/code&gt; for third party code that you have copied, cloned, forked, or otherwise included in the project.&lt;/li&gt;
 &lt;li&gt;The code that represents an &lt;code&gt;import&lt;/code&gt; path is controlled by the project, by virtue of being present in one of the source code directories in the project.&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;h2 id=&#34;installation:b0476fd92f83c4d5358b679e38a0aca3&#34;&gt;Installation&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;go get github.com/constabulary/gb/...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;getting-started:b0476fd92f83c4d5358b679e38a0aca3&#34;&gt;Getting started&lt;/h2&gt;
-
-&lt;p&gt;See the &lt;a href=&#34;getting-started.md&#34;&gt;getting started&lt;/a&gt; document.&lt;/p&gt;
-
-&lt;h2 id=&#34;commands:b0476fd92f83c4d5358b679e38a0aca3&#34;&gt;Commands&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;gb&lt;/code&gt; is the main command. It supports subcommands, of which there are currently two:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;build&lt;/code&gt; - which takes one or more import paths, ie &lt;code&gt;gb build github.com/constabulary/gb/cmd/gb&lt;/code&gt;, if executed inside &lt;code&gt;$PROJECT/src/some/path/&lt;/code&gt;, &lt;code&gt;gb build&lt;/code&gt; will build that path.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;test&lt;/code&gt; - behaves identically to &lt;code&gt;gb build&lt;/code&gt;, but runs tests.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;project-root-auto-detection:b0476fd92f83c4d5358b679e38a0aca3&#34;&gt;Project root auto detection&lt;/h2&gt;
-
-&lt;p&gt;A &lt;code&gt;gb&lt;/code&gt; project is defined as any directory that contains a &lt;code&gt;src/&lt;/code&gt; subdirectory. &lt;code&gt;gb&lt;/code&gt; automatically detects the root of the project by looking at the current working directory and walking backwards until it finds a directory called &lt;code&gt;src/&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;arguments:b0476fd92f83c4d5358b679e38a0aca3&#34;&gt;Arguments&lt;/h2&gt;
-
-&lt;p&gt;Arguments to &lt;code&gt;gb&lt;/code&gt; subcommands are package import paths or globs relative to the project &lt;code&gt;src/&lt;/code&gt; directory&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;gb build github.com/a/b&lt;/code&gt; - builds &lt;code&gt;github.com/a/b&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;gb build github.com/a/b/...&lt;/code&gt; - builds &lt;code&gt;github.com/a/b&lt;/code&gt; and all packages below it&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;gb build .../cmd/...&lt;/code&gt; - builds anything that matches &lt;code&gt;.*/cmd/.*&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;gb build&lt;/code&gt; - shorthand for &lt;code&gt;go build ...&lt;/code&gt;, depending on the current working directory this will be the entire project, or a subtree.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Other subcommands, like &lt;code&gt;test&lt;/code&gt;, &lt;code&gt;vendor&lt;/code&gt;, etc follow the same rule.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;note&lt;/em&gt;: only import paths within the &lt;code&gt;src/&lt;/code&gt; directory will match, it is not possible to build source from the &lt;code&gt;vendor/src/&lt;/code&gt; directory; it will be built if needed by virtue of being imported by a package in the &lt;code&gt;src/&lt;/code&gt; directory.&lt;/p&gt;
-
-&lt;h2 id=&#34;incremental-compilation:b0476fd92f83c4d5358b679e38a0aca3&#34;&gt;Incremental compilation&lt;/h2&gt;
-
-&lt;p&gt;By default &lt;code&gt;gb&lt;/code&gt; always performs incremental compilation and caches the results in &lt;code&gt;$PROJECT/pkg/&lt;/code&gt;. See the Flags section for options to alter this behaviour.&lt;/p&gt;
-
-&lt;h2 id=&#34;flags:b0476fd92f83c4d5358b679e38a0aca3&#34;&gt;Flags&lt;/h2&gt;
-
-&lt;p&gt;The following flags are supported by &lt;code&gt;gb&lt;/code&gt;. Note that these are flags to subcommands, so must come &lt;em&gt;after&lt;/em&gt; the subcommand.
-- &lt;code&gt;-R&lt;/code&gt; - sets the base of the project root search path from the current working directory to the value supplied. Effectively &lt;code&gt;gb&lt;/code&gt; changes working directory to this path before searching for the project root.
-- &lt;code&gt;-v&lt;/code&gt; - increases verbosity, effectively lowering the output level from INFO to DEBUG.
-- &lt;code&gt;-q&lt;/code&gt; - decreases verbosity, effectively raising the output level to ERROR. In a successful build, no output will be displayed.
-- &lt;code&gt;-goroot&lt;/code&gt; - alters the path to the go toolchain in use, eg &lt;code&gt;gb build -goroot=$HOME/go1.4&lt;/code&gt;.
-- &lt;code&gt;-goos&lt;/code&gt;, &lt;code&gt;-goarch&lt;/code&gt; - analogous to &lt;code&gt;env GOOS=... GOARCH=... gb&lt;/code&gt;.
-- &lt;code&gt;-f&lt;/code&gt; - ignore cached packages if present, new packages built will overwrite any cached packages. This effectively disables incremental compilation.
-- &lt;code&gt;-F&lt;/code&gt; - do not cache packages, cached packages will still be used for incremental compilation, &lt;code&gt;-f -F&lt;/code&gt; is advised to disable the package caching system.&lt;/p&gt;
-
-&lt;h2 id=&#34;plugins:b0476fd92f83c4d5358b679e38a0aca3&#34;&gt;Plugins&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;gb&lt;/code&gt; supports git style plugins, anything in the path that starts with &lt;code&gt;gb-&lt;/code&gt; is considered a plugin. Plugins are executed from the main &lt;code&gt;gb&lt;/code&gt; tool. At the moment there are two plugins shipped with &lt;code&gt;gb&lt;/code&gt;.&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;env&lt;/code&gt; - analogous to &lt;code&gt;go env&lt;/code&gt;, useful for debugging the environment passed to &lt;code&gt;gb&lt;/code&gt; plugins, tranditionally all environment variables in this set begin with &lt;code&gt;GB_&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;vendor&lt;/code&gt; - is a simple wrapper around &lt;code&gt;go get&lt;/code&gt; to allow easy bootstrapping of a project by fetching dependencies in to the &lt;code&gt;vendor/src/&lt;/code&gt; directory.&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>About gb</title>
-      <link>http://localhost:1313/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/about/</guid>
-      <description>
-
-&lt;h1 id=&#34;about-gb:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;About &lt;code&gt;gb&lt;/code&gt;&lt;/h1&gt;
-
-&lt;p&gt;&lt;code&gt;gb&lt;/code&gt; is a proof of concept replacement build tool for the &lt;a href=&#34;https://golang.org&#34;&gt;Go programming language&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://localhost:1313/docs/background&#34;&gt;Read more about the history of gb&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;project-based:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Project based&lt;/h2&gt;
-
-&lt;p&gt;&lt;code&gt;gb&lt;/code&gt; operates on the concept of a project. A project has the following properties:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;A project is the consumer of your own source code, and possibly dependencies that your code consumes; nothing consumes the code from a project. Another way of thinking about it is, a project is where package &lt;code&gt;main&lt;/code&gt; is.&lt;/li&gt;
-&lt;li&gt;A project is a workspace dedicated to your project&amp;rsquo;s code.&lt;/li&gt;
-&lt;li&gt;A project supports multiple locations for source code, at the moment &lt;code&gt;src/&lt;/code&gt; for your source code, and &lt;code&gt;vendor/src/&lt;/code&gt; for third party code that you have copied, cloned, forked, or otherwise included in the project.&lt;/li&gt;
-&lt;li&gt;The code that represents an &lt;code&gt;import&lt;/code&gt; path is controlled by the project, by virtue of being present in one of the source code directories in the project.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://localhost:1313/docs/project&#34;&gt;Read more about setting up a gb project&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;installation:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Installation&lt;/h2&gt;
-
-&lt;p&gt;Installing, or upgrading &lt;em&gt;gb&lt;/em&gt; is super simple (assuming you&amp;rsquo;ve already got Go installed)&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;go get -u github.com/constabulary/gb/...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://localhost:1313/docs/install&#34;&gt;Read more about installing and using gb&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;next-up:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Next up&lt;/h2&gt;
-
-&lt;p&gt;Now you&amp;rsquo;ve got gb installed, move on the to &lt;a href=&#34;http://localhost:1313/docs/getting-started&#34;&gt;getting started&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -328,6 +225,62 @@
     </item>
     
     <item>
+      <title>About gb</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/about/</guid>
+      <description>
+
+&lt;h1 id=&#34;about-gb:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;About &lt;code&gt;gb&lt;/code&gt;&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;gb&lt;/code&gt; is a proof of concept replacement build tool for the &lt;a href=&#34;https://golang.org&#34;&gt;Go programming language&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/docs/background&#34;&gt;Read more about the history of gb&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;project-based:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Project based&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;gb&lt;/code&gt; operates on the concept of a project. A project has the following properties:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A project is the consumer of your own source code, and possibly dependencies that your code consumes; nothing consumes the code from a project. Another way of thinking about it is, a project is where package &lt;code&gt;main&lt;/code&gt; is.&lt;/li&gt;
+&lt;li&gt;A project is a workspace dedicated to your project&amp;rsquo;s code.&lt;/li&gt;
+&lt;li&gt;A project supports multiple locations for source code, at the moment &lt;code&gt;src/&lt;/code&gt; for your source code, and &lt;code&gt;vendor/src/&lt;/code&gt; for third party code that you have copied, cloned, forked, or otherwise included in the project.&lt;/li&gt;
+&lt;li&gt;The code that represents an &lt;code&gt;import&lt;/code&gt; path is controlled by the project, by virtue of being present in one of the source code directories in the project.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/docs/project&#34;&gt;Read more about setting up a gb project&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;installation:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;Installing, or upgrading &lt;em&gt;gb&lt;/em&gt; is super simple (assuming you&amp;rsquo;ve already got Go installed)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;go get github.com/constabulary/gb/...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/docs/install&#34;&gt;Read more about installing and using gb&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;next-up:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Next up&lt;/h2&gt;
+
+&lt;p&gt;Now you&amp;rsquo;ve got gb installed, move on the to &lt;a href=&#34;http://localhost:1313/docs/project&#34;&gt;setting up a gb project&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Editor support</title>
+      <link>http://localhost:1313/docs/editors/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/editors/</guid>
+      <description>
+
+&lt;h1 id=&#34;editor-support:1ad680f00cfb747afb5bde284957f8f2&#34;&gt;Editor support&lt;/h1&gt;
+
+&lt;p&gt;TODO(dfc) document how to configure popular editors and IDEs to support gb projects.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Project</title>
       <link>http://localhost:1313/docs/project/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -356,6 +309,20 @@
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;em&gt;gb&lt;/em&gt; makes a distinction between your code and vendored code. &lt;em&gt;gb&lt;/em&gt; can build and test your code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Tools</title>
+      <link>http://localhost:1313/docs/tools/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/tools/</guid>
+      <description>
+
+&lt;h1 id=&#34;tool-suoport:392b1cfe5865fa09a3eb545085be9682&#34;&gt;Tool suoport&lt;/h1&gt;
+
+&lt;p&gt;TODO(dfc) document how to use tools like goimports and the go oracle with gb projects.&lt;/p&gt;
 </description>
     </item>
     
@@ -426,31 +393,6 @@
     </item>
     
     <item>
-      <title></title>
-      <link>http://localhost:1313/docs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/docs/</guid>
-      <description>
-
-&lt;h1 id=&#34;documentation:b7ce8caf60c980c765406352a9e1ac38&#34;&gt;Documentation&lt;/h1&gt;
-
-&lt;h2 id=&#34;introductory:b7ce8caf60c980c765406352a9e1ac38&#34;&gt;Introductory&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://localhost:1313/about&#34;&gt;About gb&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://localhost:1313/docs/getting-started&#34;&gt;Getting started&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;informational:b7ce8caf60c980c765406352a9e1ac38&#34;&gt;Informational&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://localhost:1313/faq&#34;&gt;Frequently asked questions&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
       <title>Your project is crap! Why would you do this ?</title>
       <link>http://localhost:1313/faq/bugs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -485,6 +427,26 @@
       
       <guid>http://localhost:1313/faq/go-tool/</guid>
       <description>&lt;p&gt;The Go authors have stated that they&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Why not wrap the go tool ?</title>
+      <link>http://localhost:1313/faq/why-not-wrap/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/faq/why-not-wrap/</guid>
+      <description>&lt;p&gt;I think the fact that gb does not just wrap the go tool is one if its distinguishing features.&lt;/p&gt;
+
+&lt;p&gt;Technically there is nothing that gb does that couldn&amp;rsquo;t be done with a shell script. In fact several tools have been proposed over the last few years that do just this, with the exception of Keith Rarik&amp;rsquo;s godep, all have been completely overlooked by the market.&lt;/p&gt;
+
+&lt;p&gt;Why is this? Well probably for one, Go programmers want to use tools written in Go. This seems like a bizarre statement, but it&amp;rsquo;s true, not just for Go programmers, but pretty much most programming communities.&lt;/p&gt;
+
+&lt;p&gt;The second reason is, while you can construct an equivalent line of shell to mimick what gb does, generalising that with $PROJECT detection from you working directory and handling the case you may be several levels deep what was a one line shell script becomes a rather complicated shell script, which adds further weight to programmers not wanting to use a tool not written in their language. Then let&amp;rsquo;s talk about Windows compatibility &amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;I think there is also value in convention. I chose vendor/src arbitrarily because that&amp;rsquo;s what it was called in Rails. Without this convention people would use 3pp, external, etc, ie everyone would come up with their own naming convention, and suddenly your not talking one shell script, but one shell script per project, along with various configuration flags, etc.&lt;/p&gt;
+
+&lt;p&gt;So, what does gb do ? Nothing that you couldn&amp;rsquo;t do by hand. But people don&amp;rsquo;t want to do things by hand, hence gb.&lt;/p&gt;
 </description>
     </item>
     
@@ -865,95 +827,6 @@ fmt.Println(v7/lib.ErrTimeout == v9/lib.ErrTimeout) =&amp;gt; false
 
 &lt;li&gt;&lt;p&gt;Write a plugin, please write a plugin.&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>gb-vendor</title>
-      <link>http://localhost:1313/plugins/gb-vendor/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://localhost:1313/plugins/gb-vendor/</guid>
-      <description>
-
-&lt;h1 id=&#34;gb-vendor:deb9735c4613ffe8714fc7f581cd9d53&#34;&gt;gb-vendor&lt;/h1&gt;
-
-&lt;h2 id=&#34;simple-example:deb9735c4613ffe8714fc7f581cd9d53&#34;&gt;Simple example&lt;/h2&gt;
-
-&lt;p&gt;In this example we&amp;rsquo;ll create a &lt;code&gt;gb&lt;/code&gt; project from the &lt;code&gt;github.com/pkg/sftp&lt;/code&gt; codebase.&lt;/p&gt;
-
-&lt;p&gt;First, create a project,&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; % mkdir -p ~/devel/sftp
- % cd ~/devel/sftp
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now checkout &lt;code&gt;github.com/pkg/sftp&lt;/code&gt; to the path it expects&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; % mkdir -p src/github.com/pkg/sftp
- % git clone https://github.com/pkg/sftp src/github.com/pkg/sftp
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Now, let&amp;rsquo;s try to build this&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; % gb build all
- 2015/04/29 13:39:44 INFO project root &amp;quot;/home/dfc/devel/sftp&amp;quot;
- 2015/04/29 13:39:44 INFO build duration: 486.967µs map[]
- 2015/04/29 13:39:44 command &amp;quot;build&amp;quot; failed: failed to resolve package &amp;quot;github.com/pkg/sftp&amp;quot;: cannot find package &amp;quot;github.com/kr/fs&amp;quot; in any of:
-         /home/dfc/go/src/github.com/kr/fs (from $GOROOT)
-         /home/dfc/devel/sftp/src/github.com/kr/fs (from $GOPATH)
-         /home/dfc/devel/sftp/vendor/src/github.com/kr/fs
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;The build failed because the dependency, &lt;code&gt;github.com/kr/fs&lt;/code&gt; was not found in the project, which was expected (ignore the message about &lt;code&gt;$GOPATH&lt;/code&gt; this is a side effect of reusing the &lt;code&gt;go/build&lt;/code&gt; package for dependency resolution). So we can use the &lt;code&gt;gb vendor&lt;/code&gt; plugin to fetch the code for &lt;code&gt;github.com/kr/fs&lt;/code&gt;, and try again&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt; % gb vendor github.com/kr/fs
- 2015/04/29 13:42:02 INFO project root &amp;quot;/home/dfc/devel/sftp&amp;quot;
- % gb build all                                                                                                                   
- 2015/04/29 13:42:06 INFO project root &amp;quot;/home/dfc/devel/sftp&amp;quot;
- 2015/04/29 13:42:06 INFO build duration: 701.994µs map[]
- 2015/04/29 13:42:06 command &amp;quot;build&amp;quot; failed: failed to resolve package &amp;quot;github.com/pkg/sftp&amp;quot;: cannot find package &amp;quot;golang.org/x/crypto/ssh&amp;quot; in any of:
-         /home/dfc/go/src/golang.org/x/crypto/ssh (from $GOROOT)
-         /home/dfc/devel/sftp/src/golang.org/x/crypto/ssh (from $GOPATH)
-         /home/dfc/devel/sftp/vendor/src/golang.org/x/crypto/ssh
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Nearly, there, just missing the &lt;code&gt;golang.org/x/crypto/ssh&lt;/code&gt; package, again we&amp;rsquo;ll use &lt;code&gt;gb vendor&lt;/code&gt;.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;  % gb vendor golang.org/x/crypto/ssh
- 2015/04/29 13:44:32 INFO project root &amp;quot;/home/dfc/devel/sftp&amp;quot;
-  % gb build all                                                                                                                   
- 2015/04/29 13:44:40 INFO project root &amp;quot;/home/dfc/devel/sftp&amp;quot;
- 2015/04/29 13:44:40 INFO compile github.com/kr/fs [filesystem.go walk.go]
- 2015/04/29 13:44:40 INFO compile golang.org/x/crypto/ssh [buffer.go certs.go channel.go cipher.go client.go client_auth.go common.go connection.go doc.go handshake.go kex.go keys.go mac.go messages.go mux.go server.go session.go tcpip.go transport.go]
- 2015/04/29 13:44:40 INFO install compile {fs github.com/kr/fs /home/dfc/devel/sftp/vendor/src/github.com/kr/fs}
- 2015/04/29 13:44:41 INFO install compile {ssh golang.org/x/crypto/ssh /home/dfc/devel/sftp/vendor/src/golang.org/x/crypto/ssh}
- 2015/04/29 13:44:41 INFO compile golang.org/x/crypto/ssh/agent [client.go forward.go keyring.go server.go]
- 2015/04/29 13:44:41 INFO compile github.com/pkg/sftp [attrs.go client.go packet.go release.go sftp.go]
- 2015/04/29 13:44:42 INFO install compile {agent golang.org/x/crypto/ssh/agent /home/dfc/devel/sftp/vendor/src/golang.org/x/crypto/ssh/agent}
- 2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/buffered-read-benchmark [main.go]
- 2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/buffered-write-benchmark [main.go]
- 2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/gsftp [main.go]
- 2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/streaming-read-benchmark [main.go]
- 2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/streaming-write-benchmark [main.go]
- 2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/buffered-read-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/buffered-read-benchmark/main.a]
- 2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/gsftp [/tmp/gb786934546/github.com/pkg/sftp/examples/gsftp/main.a]
- 2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/streaming-read-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/streaming-read-benchmark/main.a]
- 2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/streaming-write-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/streaming-write-benchmark/main.a]
- 2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/buffered-write-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/buffered-write-benchmark/main.a]
- 2015/04/29 19:50:58 INFO build duration: 2.535541868s map[compile:1.895628229s link:9.827128875s]
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;And now it builds. Some things to note&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The package name &lt;code&gt;all&lt;/code&gt; matches all the packages inside your project&amp;rsquo;s &lt;code&gt;src/&lt;/code&gt; directory. It&amp;rsquo;s a simple way to build everything, you can use other import paths and globs.&lt;/li&gt;
-&lt;li&gt;There is no way to build your vendored source, it will be built if required to build your code in the &lt;code&gt;src/&lt;/code&gt; directory.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;wrapping-up:deb9735c4613ffe8714fc7f581cd9d53&#34;&gt;Wrapping up&lt;/h1&gt;
-
-&lt;p&gt;Setting up, or converting code to a &lt;code&gt;gb&lt;/code&gt; project is simple. Once you&amp;rsquo;re done, just check the whole project into your source control.&lt;/p&gt;
 </description>
     </item>
     

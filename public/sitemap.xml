@@ -17,11 +17,15 @@
   </url>
   
   <url>
+    <loc>http://localhost:1313/docs/install/</loc>
+  </url>
+  
+  <url>
     <loc>http://localhost:1313/about/</loc>
   </url>
   
   <url>
-    <loc>http://localhost:1313/docs/install/</loc>
+    <loc>http://localhost:1313/docs/editors/</loc>
   </url>
   
   <url>
@@ -29,11 +33,11 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/docs/usage/</loc>
+    <loc>http://localhost:1313/docs/tools/</loc>
   </url>
   
   <url>
-    <loc>http://localhost:1313/docs/</loc>
+    <loc>http://localhost:1313/docs/usage/</loc>
   </url>
   
   <url>
@@ -46,6 +50,10 @@
   
   <url>
     <loc>http://localhost:1313/faq/go-tool/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/faq/why-not-wrap/</loc>
   </url>
   
   <url>
