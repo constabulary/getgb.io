@@ -8,8 +8,60 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/about/</loc>
+    <loc>http://localhost:1313/getting-started/</loc>
     <lastmod>2014-05-07T11:27:27-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/docs/background/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/about/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/docs/install/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/docs/project/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/docs/usage/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/docs/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/faq/bugs/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/faq/gb-run/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/faq/go-tool/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/plugins/gb-env/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/plugins/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/why/</loc>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/plugins/gb-vendor/</loc>
   </url>
   
 </urlset>

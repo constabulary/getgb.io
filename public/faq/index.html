@@ -35,32 +35,42 @@
       </div>
 
 
-      <div class="jumbotron">
-        <h1><code>gb</code></h1>
-        <p class="lead">The project based build tool for the Go programming language.</p>
-        <p><a href="/docs/install">Install gb today</a></p>
-	<pre>go get github.com/constabulary/gb/...</pre>
-      </div>
+<h1>Frequently asked questions</h1>
 
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>Features</h4>
-          <ul>
-            <li>Project based workflow</li>
-            <li>Automatic project detection</li>
-            <li>Zero configuration files</li>
-	  </ul>
-        </div>
+<li>
+<a href="#">Why didn’t you contribute back to the go tool ?</a>
+</li>
 
-        <div class="col-lg-6">
-          <h4>Benefits</h4>
-          <ul>
-            <li>Reliable, reproducible, builds without import rewriting</li>
-            <li>No enviroment variables to set</li>
-            <li>Backwards compatible with <code>$GOPATH</code></li>
-	  </ul>
-        </div>
-      </div>
+<li>
+<a href="#">Why isn&#39;t there a gb run command ?</a>
+</li>
+
+<li>
+<a href="#">Your project is crap! Why would you do this ?</a>
+</li>
+
+
+
+<h2 id="">Why didn’t you contribute back to the go tool ?</h2>
+<p>The Go authors have stated that they</p>
+
+
+<h2 id="">Why isn&#39;t there a gb run command ?</h2>
+<p>gb is a project based tool. Every subcommand works on a list of import paths (packages) within that project, and most default to &ldquo;all packages in the project&rdquo;.</p>
+
+<p>One of my frustrations with the go tool was its inconsistency in this manner, most go commands work on import paths, except for <code>go run</code> which takes a file. Actually that&rsquo;s not correct, <code>go run</code> takes a list of files, but your chances of success of using it drops exponentially the more files you pass to <code>go run</code>.</p>
+
+<p>While I recognise the utility of <code>go run</code> for simple examples, and it&rsquo;s a great way to introduce the language, the fact that it works allowed many new gophers to use it well past the point of its original intent and have a confusing and unsatisfactory time. When they ask for help, they have the double wammy that smug experienced gophers tell them &ldquo;they are holding it wrong&rdquo; and should learn to restructure their code.</p>
+
+<p>Because gb is focused on a project workflow, not a package or file workflow; most of the time you are building or testing your project (see digression in #49 ) I felt I could make things simpler and more consistent by not supporting <code>gb run</code> at all.</p>
+
+<p><a href="https://github.com/constabulary/gb/issues/51">See also issue 51</a>.</p>
+
+
+<h2 id="">Your project is crap! Why would you do this ?</h2>
+<p>Thanks for the feedback.</p>
+
+
 
       <footer class="footer">
   <ul>

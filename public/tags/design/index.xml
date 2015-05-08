@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Design on gb - The project based build tool for Go</title>
+    <link>http://localhost:1313/tags/design/</link>
+    <description>Recent content in Design on gb - The project based build tool for Go</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/tags/design/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Why isn&#39;t there a gb run command ?</title>
+      <link>http://localhost:1313/faq/gb-run/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/faq/gb-run/</guid>
+      <description>&lt;p&gt;gb is a project based tool. Every subcommand works on a list of import paths (packages) within that project, and most default to &amp;ldquo;all packages in the project&amp;rdquo;.&lt;/p&gt;
+
+&lt;p&gt;One of my frustrations with the go tool was its inconsistency in this manner, most go commands work on import paths, except for &lt;code&gt;go run&lt;/code&gt; which takes a file. Actually that&amp;rsquo;s not correct, &lt;code&gt;go run&lt;/code&gt; takes a list of files, but your chances of success of using it drops exponentially the more files you pass to &lt;code&gt;go run&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;While I recognise the utility of &lt;code&gt;go run&lt;/code&gt; for simple examples, and it&amp;rsquo;s a great way to introduce the language, the fact that it works allowed many new gophers to use it well past the point of its original intent and have a confusing and unsatisfactory time. When they ask for help, they have the double wammy that smug experienced gophers tell them &amp;ldquo;they are holding it wrong&amp;rdquo; and should learn to restructure their code.&lt;/p&gt;
+
+&lt;p&gt;Because gb is focused on a project workflow, not a package or file workflow; most of the time you are building or testing your project (see digression in #49 ) I felt I could make things simpler and more consistent by not supporting &lt;code&gt;gb run&lt;/code&gt; at all.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/constabulary/gb/issues/51&#34;&gt;See also issue 51&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

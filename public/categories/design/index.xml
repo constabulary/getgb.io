@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Design on gb - The project based build tool for Go</title>
+    <link>http://localhost:1313/categories/design/</link>
+    <description>Recent content in Design on gb - The project based build tool for Go</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/categories/design/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>About gb</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/about/</guid>
+      <description>
+
+&lt;h1 id=&#34;about-gb:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;About &lt;code&gt;gb&lt;/code&gt;&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;gb&lt;/code&gt; is a proof of concept replacement build tool for the &lt;a href=&#34;https://golang.org&#34;&gt;Go programming language&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/docs/background&#34;&gt;Read more about the history of gb&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;project-based:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Project based&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;gb&lt;/code&gt; operates on the concept of a project. A project has the following properties:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;A project is the consumer of your own source code, and possibly dependencies that your code consumes; nothing consumes the code from a project. Another way of thinking about it is, a project is where package &lt;code&gt;main&lt;/code&gt; is.&lt;/li&gt;
+&lt;li&gt;A project is a workspace dedicated to your project&amp;rsquo;s code.&lt;/li&gt;
+&lt;li&gt;A project supports multiple locations for source code, at the moment &lt;code&gt;src/&lt;/code&gt; for your source code, and &lt;code&gt;vendor/src/&lt;/code&gt; for third party code that you have copied, cloned, forked, or otherwise included in the project.&lt;/li&gt;
+&lt;li&gt;The code that represents an &lt;code&gt;import&lt;/code&gt; path is controlled by the project, by virtue of being present in one of the source code directories in the project.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/docs/project&#34;&gt;Read more about setting up a gb project&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;installation:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;Installing, or upgrading &lt;em&gt;gb&lt;/em&gt; is super simple (assuming you&amp;rsquo;ve already got Go installed)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;go get -u github.com/constabulary/gb/...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/docs/install&#34;&gt;Read more about installing and using gb&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;next-up:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;Next up&lt;/h2&gt;
+
+&lt;p&gt;Now you&amp;rsquo;ve got gb installed, move on the to &lt;a href=&#34;http://localhost:1313/docs/getting-started&#34;&gt;getting started&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

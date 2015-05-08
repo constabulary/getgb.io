@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docs on gb - The project based build tool for Go</title>
+    <link>http://localhost:1313/categories/docs/</link>
+    <description>Recent content in Docs on gb - The project based build tool for Go</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/categories/docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Installation</title>
+      <link>http://localhost:1313/docs/install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/install/</guid>
+      <description>
+
+&lt;h1 id=&#34;installation:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Installation&lt;/h1&gt;
+
+&lt;p&gt;This page will help you install &lt;em&gt;gb&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;prerequisites:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Prerequisites&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;gb&lt;/em&gt; is compatible with Go 1.4. If you haven&amp;rsquo;t installed Go yet, we recommmend using the binary installers available from the &lt;a href=&#34;http://golang.org/doc/install#install&#34;&gt;office Go website&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;installation-1:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;gb&lt;/em&gt; can be installed with the following command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;go get github.com/constabulary/gb/...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;keeping-up-to-date:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Keeping up to date&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;gb&lt;/em&gt; is under active development, you can upgrade your &lt;em&gt;gb&lt;/em&gt; installation to the latest with the following command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;go get -u github.com/constabulary/gb/...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;next-up:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Next Up&lt;/h2&gt;
+
+&lt;p&gt;Now you&amp;rsquo;ve installed &lt;em&gt;gb&lt;/em&gt;, move on to &lt;a href=&#34;http://localhost:1313/docs/project&#34;&gt;setting up your project&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Project</title>
+      <link>http://localhost:1313/docs/project/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/project/</guid>
+      <description>
+
+&lt;h1 id=&#34;projects:10be9c81b9315bdc8704629d17642664&#34;&gt;Projects&lt;/h1&gt;
+
+&lt;p&gt;A &lt;b&gt;gb&lt;/b&gt; project is a workspace for all the Go code that is required to build your project.&lt;/p&gt;
+
+&lt;p&gt;A &lt;code&gt;gb&lt;/code&gt; project is a folder on disk that contains a subdirectory named &lt;code&gt;src/&lt;/code&gt;. That&amp;rsquo;s it, no environment variables to set. For the rest of this document we&amp;rsquo;ll refer to your &lt;code&gt;gb&lt;/code&gt; project as &lt;code&gt;$PROJECT&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;your-stuff-their-stuff:10be9c81b9315bdc8704629d17642664&#34;&gt;Your stuff, their stuff&lt;/h2&gt;
+
+&lt;p&gt;&lt;b&gt;gb&lt;/b&gt; projects differentiate between &lt;em&gt;your stuff&lt;/em&gt;, the code you&amp;rsquo;ve written, and &lt;em&gt;their stuff&lt;/em&gt;, the code that your code depends on. We call &lt;em&gt;their stuff&lt;/em&gt; vendored code.&lt;/p&gt;
+
+&lt;p&gt;Inside a &lt;em&gt;gb&lt;/em&gt; project &lt;em&gt;your stuff&lt;/em&gt;, the source code of your project goes in&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$PROJECT/src/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The source code that others&amp;rsquo; have written, &lt;em&gt;their stuff&lt;/em&gt;, goes in&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$PROJECT/vendor/src/
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;em&gt;gb&lt;/em&gt; makes a distinction between your code and vendored code. &lt;em&gt;gb&lt;/em&gt; can build and test your code.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Usage</title>
+      <link>http://localhost:1313/docs/usage/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/docs/usage/</guid>
+      <description>
+
+&lt;h1 id=&#34;usage:dc32fe45042973266ca60588597e0b66&#34;&gt;Usage&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;gb&lt;/code&gt; is the main command. It supports subcommands, of which there are currently two:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;build&lt;/code&gt; - which builds your code.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;test&lt;/code&gt; - which behaves identically to &lt;code&gt;gb build&lt;/code&gt;, but runs tests.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;project-root-auto-detection:dc32fe45042973266ca60588597e0b66&#34;&gt;Project root auto detection&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;gb&lt;/em&gt; automatically detects your project&amp;rsquo;s root directory based on your current working directory.&lt;/p&gt;
+
+&lt;p&gt;A gb project is defined as any directory that contains a &lt;code&gt;src/&lt;/code&gt; subdirectory. gb automatically detects the root of the project by looking at the current working directory and walking backwards until it finds a directory that contains a &lt;code&gt;src/&lt;/code&gt; subdirectory.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://localhost:1313/docs/project&#34;&gt;Read more about managing gb projects&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In the event you wish to override this autodetection mechanism, the &lt;code&gt;-R&lt;/code&gt; flag can be used to supply a project root.&lt;/p&gt;
+
+&lt;h2 id=&#34;arguments:dc32fe45042973266ca60588597e0b66&#34;&gt;Arguments&lt;/h2&gt;
+
+&lt;p&gt;Arguments to &lt;code&gt;gb&lt;/code&gt; subcommands are package import paths or globs relative to the project &lt;code&gt;src/&lt;/code&gt; directory&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;gb build github.com/a/b&lt;/code&gt; - builds &lt;code&gt;github.com/a/b&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gb build github.com/a/b/...&lt;/code&gt; - builds &lt;code&gt;github.com/a/b&lt;/code&gt; and all packages below it&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gb build .../cmd/...&lt;/code&gt; - builds anything that matches &lt;code&gt;.*/cmd/.*&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gb build&lt;/code&gt; - shorthand for &lt;code&gt;go build ...&lt;/code&gt;, depending on the current working directory this will be the entire project, or a subtree.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Other subcommands, like &lt;code&gt;test&lt;/code&gt;, &lt;code&gt;vendor&lt;/code&gt;, etc follow the same rule.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;note&lt;/em&gt;: only import paths within the &lt;code&gt;src/&lt;/code&gt; directory will match, it is not possible to build source from the &lt;code&gt;vendor/src/&lt;/code&gt; directory; it will be built if needed by virtue of being imported by a package in the &lt;code&gt;src/&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;h2 id=&#34;incremental-compilation:dc32fe45042973266ca60588597e0b66&#34;&gt;Incremental compilation&lt;/h2&gt;
+
+&lt;p&gt;By default &lt;code&gt;gb&lt;/code&gt; always performs incremental compilation and caches the results in &lt;code&gt;$PROJECT/pkg/&lt;/code&gt;. See the Flags section for options to alter this behaviour.&lt;/p&gt;
+
+&lt;h2 id=&#34;flags:dc32fe45042973266ca60588597e0b66&#34;&gt;Flags&lt;/h2&gt;
+
+&lt;p&gt;The following flags are supported by &lt;code&gt;gb&lt;/code&gt;. Note that these are flags to subcommands, so must come &lt;em&gt;after&lt;/em&gt; the subcommand.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;-R&lt;/code&gt; - sets the base of the project root search path from the current working directory to the value supplied. Effectively &lt;code&gt;gb&lt;/code&gt; changes working directory to this path before searching for the project root.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-v&lt;/code&gt; - increases verbosity, effectively lowering the output level from INFO to DEBUG.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-q&lt;/code&gt; - decreases verbosity, effectively raising the output level to ERROR. In a successful build, no output will be displayed.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-goroot&lt;/code&gt; - alters the path to the go toolchain in use, eg &lt;code&gt;gb build -goroot=$HOME/go1.4&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-goos&lt;/code&gt;, &lt;code&gt;-goarch&lt;/code&gt; - analogous to &lt;code&gt;env GOOS=... GOARCH=... gb&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-f&lt;/code&gt; - ignore cached packages if present, new packages built will overwrite any cached packages. This effectively disables incremental compilation.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;-F&lt;/code&gt; - do not cache packages, cached packages will still be used for incremental compilation, &lt;code&gt;-f -F&lt;/code&gt; is advised to disable the package caching system.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;next-up:dc32fe45042973266ca60588597e0b66&#34;&gt;Next Up&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;gb&lt;/code&gt; supports git style plugins which can be used to extend its functionality. &lt;a href=&#34;http://localhost:1313/plugins&#34;&gt;Read more about plugins&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
