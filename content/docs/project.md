@@ -64,3 +64,7 @@ Now your project has some code in it, we can compile and run it
 2015/05/08 22:26:19 INFO build duration: 415.421666ms map[compile:11.867412ms link:402.973924ms]
 % <b>bin/hello</b>
 Hello gb</pre>
+
+## Next steps
+
+Now that you've created a gb project, check the entire $PROJECT into the source control of your choosing.
