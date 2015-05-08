@@ -95,13 +95,13 @@
 
 &lt;h1 id=&#34;projects:10be9c81b9315bdc8704629d17642664&#34;&gt;Projects&lt;/h1&gt;
 
-&lt;p&gt;A &lt;b&gt;gb&lt;/b&gt; project is a workspace for all the Go code that is required to build your project.&lt;/p&gt;
+&lt;p&gt;A gb project is a workspace for all the Go code that is required to build your project.&lt;/p&gt;
 
 &lt;p&gt;A &lt;code&gt;gb&lt;/code&gt; project is a folder on disk that contains a subdirectory named &lt;code&gt;src/&lt;/code&gt;. That&amp;rsquo;s it, no environment variables to set. For the rest of this document we&amp;rsquo;ll refer to your &lt;code&gt;gb&lt;/code&gt; project as &lt;code&gt;$PROJECT&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;your-stuff-their-stuff:10be9c81b9315bdc8704629d17642664&#34;&gt;Your stuff, their stuff&lt;/h2&gt;
 
-&lt;p&gt;&lt;b&gt;gb&lt;/b&gt; projects differentiate between &lt;em&gt;your stuff&lt;/em&gt;, the code you&amp;rsquo;ve written, and &lt;em&gt;their stuff&lt;/em&gt;, the code that your code depends on. We call &lt;em&gt;their stuff&lt;/em&gt; vendored code.&lt;/p&gt;
+&lt;p&gt;gb projects differentiate between &lt;em&gt;your stuff&lt;/em&gt;, the code you&amp;rsquo;ve written, and &lt;em&gt;their stuff&lt;/em&gt;, the code that your code depends on. We call &lt;em&gt;their stuff&lt;/em&gt; vendored code.&lt;/p&gt;
 
 &lt;p&gt;Inside a &lt;em&gt;gb&lt;/em&gt; project &lt;em&gt;your stuff&lt;/em&gt;, the source code of your project goes in&lt;/p&gt;
 
@@ -113,7 +113,7 @@
 &lt;pre&gt;&lt;code&gt;$PROJECT/vendor/src/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;em&gt;gb&lt;/em&gt; makes a distinction between your code and vendored code. &lt;em&gt;gb&lt;/em&gt; can build and test your code.&lt;/p&gt;
+&lt;p&gt;gb makes a distinction between your code and vendored code. gb can build and test your code.&lt;/p&gt;
 </description>
     </item>
     

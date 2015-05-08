@@ -189,38 +189,16 @@
     </item>
     
     <item>
-      <title>Installation</title>
-      <link>http://localhost:1313/docs/install/</link>
+      <title>Editor support</title>
+      <link>http://localhost:1313/docs/editors/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/docs/install/</guid>
+      <guid>http://localhost:1313/docs/editors/</guid>
       <description>
 
-&lt;h1 id=&#34;installation:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Installation&lt;/h1&gt;
+&lt;h1 id=&#34;editor-support:1ad680f00cfb747afb5bde284957f8f2&#34;&gt;Editor support&lt;/h1&gt;
 
-&lt;p&gt;This page will help you install &lt;em&gt;gb&lt;/em&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;prerequisites:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Prerequisites&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;gb&lt;/em&gt; is compatible with Go 1.4. If you haven&amp;rsquo;t installed Go yet, we recommmend using the binary installers available from the &lt;a href=&#34;http://golang.org/doc/install#install&#34;&gt;office Go website&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&#34;installation-1:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Installation&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;gb&lt;/em&gt; can be installed with the following command&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;go get github.com/constabulary/gb/...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;keeping-up-to-date:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Keeping up to date&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;gb&lt;/em&gt; is under active development, you can upgrade your &lt;em&gt;gb&lt;/em&gt; installation to the latest with the following command&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;go get -u github.com/constabulary/gb/...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;next-up:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Next Up&lt;/h2&gt;
-
-&lt;p&gt;Now you&amp;rsquo;ve installed &lt;em&gt;gb&lt;/em&gt;, move on to &lt;a href=&#34;http://localhost:1313/docs/project&#34;&gt;setting up your project&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;TODO(dfc) document how to configure popular editors and IDEs to support gb projects.&lt;/p&gt;
 </description>
     </item>
     
@@ -267,16 +245,38 @@
     </item>
     
     <item>
-      <title>Editor support</title>
-      <link>http://localhost:1313/docs/editors/</link>
+      <title>Installation</title>
+      <link>http://localhost:1313/docs/install/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/docs/editors/</guid>
+      <guid>http://localhost:1313/docs/install/</guid>
       <description>
 
-&lt;h1 id=&#34;editor-support:1ad680f00cfb747afb5bde284957f8f2&#34;&gt;Editor support&lt;/h1&gt;
+&lt;h1 id=&#34;installation:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Installation&lt;/h1&gt;
 
-&lt;p&gt;TODO(dfc) document how to configure popular editors and IDEs to support gb projects.&lt;/p&gt;
+&lt;p&gt;This page will help you install &lt;em&gt;gb&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;prerequisites:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Prerequisites&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;gb&lt;/em&gt; is compatible with Go 1.4. If you haven&amp;rsquo;t installed Go yet, we recommmend using the binary installers available from the &lt;a href=&#34;http://golang.org/doc/install#install&#34;&gt;office Go website&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&#34;installation-1:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;gb&lt;/em&gt; can be installed with the following command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;go get github.com/constabulary/gb/...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;keeping-up-to-date:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Keeping up to date&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;gb&lt;/em&gt; is under active development, you can upgrade your &lt;em&gt;gb&lt;/em&gt; installation to the latest with the following command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;go get -u github.com/constabulary/gb/...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;next-up:ee40007639ba1d9861b5cc3e7ade0aef&#34;&gt;Next Up&lt;/h2&gt;
+
+&lt;p&gt;Now you&amp;rsquo;ve installed &lt;em&gt;gb&lt;/em&gt;, move on to &lt;a href=&#34;http://localhost:1313/docs/project&#34;&gt;setting up your project&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
@@ -290,13 +290,13 @@
 
 &lt;h1 id=&#34;projects:10be9c81b9315bdc8704629d17642664&#34;&gt;Projects&lt;/h1&gt;
 
-&lt;p&gt;A &lt;b&gt;gb&lt;/b&gt; project is a workspace for all the Go code that is required to build your project.&lt;/p&gt;
+&lt;p&gt;A gb project is a workspace for all the Go code that is required to build your project.&lt;/p&gt;
 
 &lt;p&gt;A &lt;code&gt;gb&lt;/code&gt; project is a folder on disk that contains a subdirectory named &lt;code&gt;src/&lt;/code&gt;. That&amp;rsquo;s it, no environment variables to set. For the rest of this document we&amp;rsquo;ll refer to your &lt;code&gt;gb&lt;/code&gt; project as &lt;code&gt;$PROJECT&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h2 id=&#34;your-stuff-their-stuff:10be9c81b9315bdc8704629d17642664&#34;&gt;Your stuff, their stuff&lt;/h2&gt;
 
-&lt;p&gt;&lt;b&gt;gb&lt;/b&gt; projects differentiate between &lt;em&gt;your stuff&lt;/em&gt;, the code you&amp;rsquo;ve written, and &lt;em&gt;their stuff&lt;/em&gt;, the code that your code depends on. We call &lt;em&gt;their stuff&lt;/em&gt; vendored code.&lt;/p&gt;
+&lt;p&gt;gb projects differentiate between &lt;em&gt;your stuff&lt;/em&gt;, the code you&amp;rsquo;ve written, and &lt;em&gt;their stuff&lt;/em&gt;, the code that your code depends on. We call &lt;em&gt;their stuff&lt;/em&gt; vendored code.&lt;/p&gt;
 
 &lt;p&gt;Inside a &lt;em&gt;gb&lt;/em&gt; project &lt;em&gt;your stuff&lt;/em&gt;, the source code of your project goes in&lt;/p&gt;
 
@@ -308,7 +308,7 @@
 &lt;pre&gt;&lt;code&gt;$PROJECT/vendor/src/
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;em&gt;gb&lt;/em&gt; makes a distinction between your code and vendored code. &lt;em&gt;gb&lt;/em&gt; can build and test your code.&lt;/p&gt;
+&lt;p&gt;gb makes a distinction between your code and vendored code. gb can build and test your code.&lt;/p&gt;
 </description>
     </item>
     
@@ -463,6 +463,10 @@
 &lt;p&gt;&lt;code&gt;gb-env&lt;/code&gt; is a simple plugin useful for debugging the environment passed to a &lt;code&gt;gb&lt;/code&gt; plugin.&lt;/p&gt;
 
 &lt;p&gt;Tranditionally all environment variables in this set begin with &lt;code&gt;GB_&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;% &lt;b&gt;gb env&lt;/b&gt;
+2015/05/08 21:59:28 INFO project root &#34;/home/dfc/devel/demo&#34;
+GB_PROJECT_DIR=/home/dfc/devel/demo&lt;/pre&gt;
 </description>
     </item>
     

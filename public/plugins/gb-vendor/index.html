@@ -45,65 +45,60 @@
 
 <p>First, create a project,</p>
 
-<pre><code> % mkdir -p ~/devel/sftp
- % cd ~/devel/sftp
-</code></pre>
+<pre>% <b>mkdir -p ~/devel/sftp</b>
+% <b>cd ~/devel/sftp</b></pre>
 
 <p>Now checkout <code>github.com/pkg/sftp</code> to the path it expects</p>
 
-<pre><code> % mkdir -p src/github.com/pkg/sftp
- % git clone https://github.com/pkg/sftp src/github.com/pkg/sftp
-</code></pre>
+<pre>% <b>mkdir -p src/github.com/pkg/sftp</b>
+% git clone https://github.com/pkg/sftp src/github.com/pkg/sftp</b></pre>
 
 <p>Now, let&rsquo;s try to build this</p>
 
-<pre><code> % gb build all
- 2015/04/29 13:39:44 INFO project root &quot;/home/dfc/devel/sftp&quot;
- 2015/04/29 13:39:44 INFO build duration: 486.967µs map[]
- 2015/04/29 13:39:44 command &quot;build&quot; failed: failed to resolve package &quot;github.com/pkg/sftp&quot;: cannot find package &quot;github.com/kr/fs&quot; in any of:
-         /home/dfc/go/src/github.com/kr/fs (from $GOROOT)
-         /home/dfc/devel/sftp/src/github.com/kr/fs (from $GOPATH)
-         /home/dfc/devel/sftp/vendor/src/github.com/kr/fs
-</code></pre>
+<pre>% <b>gb build all</b>
+2015/04/29 13:39:44 INFO project root "/home/dfc/devel/sftp"
+2015/04/29 13:39:44 INFO build duration: 486.967µs map[]
+2015/04/29 13:39:44 command "build" failed: failed to resolve package "github.com/pkg/sftp": cannot find package "github.com/kr/fs" in any of:
+       /home/dfc/go/src/github.com/kr/fs (from $GOROOT)
+       /home/dfc/devel/sftp/src/github.com/kr/fs (from $GOPATH)
+       /home/dfc/devel/sftp/vendor/src/github.com/kr/fs</pre>
 
 <p>The build failed because the dependency, <code>github.com/kr/fs</code> was not found in the project, which was expected (ignore the message about <code>$GOPATH</code> this is a side effect of reusing the <code>go/build</code> package for dependency resolution). So we can use the <code>gb vendor</code> plugin to fetch the code for <code>github.com/kr/fs</code>, and try again</p>
 
-<pre><code> % gb vendor github.com/kr/fs
- 2015/04/29 13:42:02 INFO project root &quot;/home/dfc/devel/sftp&quot;
- % gb build all                                                                                                                   
- 2015/04/29 13:42:06 INFO project root &quot;/home/dfc/devel/sftp&quot;
- 2015/04/29 13:42:06 INFO build duration: 701.994µs map[]
- 2015/04/29 13:42:06 command &quot;build&quot; failed: failed to resolve package &quot;github.com/pkg/sftp&quot;: cannot find package &quot;golang.org/x/crypto/ssh&quot; in any of:
-         /home/dfc/go/src/golang.org/x/crypto/ssh (from $GOROOT)
-         /home/dfc/devel/sftp/src/golang.org/x/crypto/ssh (from $GOPATH)
-         /home/dfc/devel/sftp/vendor/src/golang.org/x/crypto/ssh
-</code></pre>
+<pre>% <b>gb vendor github.com/kr/fs</b>
+2015/04/29 13:42:02 INFO project root "/home/dfc/devel/sftp"
+% <b>gb build all</b>
+2015/04/29 13:42:06 INFO project root "/home/dfc/devel/sftp"
+2015/04/29 13:42:06 INFO build duration: 701.994µs map[]
+2015/04/29 13:42:06 command "build" failed: failed to resolve package "github.com/pkg/sftp": cannot find package "golang.org/x/crypto/ssh" in any of:
+       /home/dfc/go/src/golang.org/x/crypto/ssh (from $GOROOT)
+       /home/dfc/devel/sftp/src/golang.org/x/crypto/ssh (from $GOPATH)
+       /home/dfc/devel/sftp/vendor/src/golang.org/x/crypto/ssh</pre>
 
 <p>Nearly, there, just missing the <code>golang.org/x/crypto/ssh</code> package, again we&rsquo;ll use <code>gb vendor</code>.</p>
 
-<pre><code>  % gb vendor golang.org/x/crypto/ssh
- 2015/04/29 13:44:32 INFO project root &quot;/home/dfc/devel/sftp&quot;
-  % gb build all                                                                                                                   
- 2015/04/29 13:44:40 INFO project root &quot;/home/dfc/devel/sftp&quot;
- 2015/04/29 13:44:40 INFO compile github.com/kr/fs [filesystem.go walk.go]
- 2015/04/29 13:44:40 INFO compile golang.org/x/crypto/ssh [buffer.go certs.go channel.go cipher.go client.go client_auth.go common.go connection.go doc.go handshake.go kex.go keys.go mac.go messages.go mux.go server.go session.go tcpip.go transport.go]
- 2015/04/29 13:44:40 INFO install compile {fs github.com/kr/fs /home/dfc/devel/sftp/vendor/src/github.com/kr/fs}
- 2015/04/29 13:44:41 INFO install compile {ssh golang.org/x/crypto/ssh /home/dfc/devel/sftp/vendor/src/golang.org/x/crypto/ssh}
- 2015/04/29 13:44:41 INFO compile golang.org/x/crypto/ssh/agent [client.go forward.go keyring.go server.go]
- 2015/04/29 13:44:41 INFO compile github.com/pkg/sftp [attrs.go client.go packet.go release.go sftp.go]
- 2015/04/29 13:44:42 INFO install compile {agent golang.org/x/crypto/ssh/agent /home/dfc/devel/sftp/vendor/src/golang.org/x/crypto/ssh/agent}
- 2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/buffered-read-benchmark [main.go]
- 2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/buffered-write-benchmark [main.go]
- 2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/gsftp [main.go]
- 2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/streaming-read-benchmark [main.go]
- 2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/streaming-write-benchmark [main.go]
- 2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/buffered-read-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/buffered-read-benchmark/main.a]
- 2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/gsftp [/tmp/gb786934546/github.com/pkg/sftp/examples/gsftp/main.a]
- 2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/streaming-read-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/streaming-read-benchmark/main.a]
- 2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/streaming-write-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/streaming-write-benchmark/main.a]
- 2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/buffered-write-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/buffered-write-benchmark/main.a]
- 2015/04/29 19:50:58 INFO build duration: 2.535541868s map[compile:1.895628229s link:9.827128875s]
-</code></pre>
+<pre>% <b>gb vendor golang.org/x/crypto/ssh</b>
+2015/04/29 13:44:32 INFO project root "/home/dfc/devel/sftp"
+% <b>gb build all</b>
+2015/04/29 13:44:40 INFO project root "/home/dfc/devel/sftp"
+2015/04/29 13:44:40 INFO compile github.com/kr/fs [filesystem.go walk.go]
+2015/04/29 13:44:40 INFO compile golang.org/x/crypto/ssh [buffer.go certs.go channel.go cipher.go client.go client_auth.go common.go connection.go doc.go handshake.go kex.go keys.go mac.go messages.go mux.go server.go session.go tcpip.go transport.go]
+2015/04/29 13:44:40 INFO install compile {fs github.com/kr/fs /home/dfc/devel/sftp/vendor/src/github.com/kr/fs}
+2015/04/29 13:44:41 INFO install compile {ssh golang.org/x/crypto/ssh /home/dfc/devel/sftp/vendor/src/golang.org/x/crypto/ssh}
+2015/04/29 13:44:41 INFO compile golang.org/x/crypto/ssh/agent [client.go forward.go keyring.go server.go]
+2015/04/29 13:44:41 INFO compile github.com/pkg/sftp [attrs.go client.go packet.go release.go sftp.go]
+2015/04/29 13:44:42 INFO install compile {agent golang.org/x/crypto/ssh/agent /home/dfc/devel/sftp/vendor/src/golang.org/x/crypto/ssh/agent}
+2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/buffered-read-benchmark [main.go]
+2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/buffered-write-benchmark [main.go]
+2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/gsftp [main.go]
+2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/streaming-read-benchmark [main.go]
+2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/streaming-write-benchmark [main.go]
+2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/buffered-read-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/buffered-read-benchmark/main.a]
+2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/gsftp [/tmp/gb786934546/github.com/pkg/sftp/examples/gsftp/main.a]
+2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/streaming-read-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/streaming-read-benchmark/main.a]
+2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/streaming-write-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/streaming-write-benchmark/main.a]
+2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/buffered-write-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/buffered-write-benchmark/main.a]
+2015/04/29 19:50:58 INFO build duration: 2.535541868s map[compile:1.895628229s link:9.827128875s]</pre>
 
 <p>And now it builds. Some things to note</p>
 
