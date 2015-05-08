@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gb - The project based build tool for Go</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on gb - The project based build tool for Go</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 07 May 2014 11:27:27 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>gb - the project based build tool for Go</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Wed, 07 May 2014 11:27:27 -0400</pubDate>
+      
+      <guid>http://localhost:1313/about/</guid>
+      <description>
+
+&lt;h1 id=&#34;about-gb:6083a88ee3411b0d17ce02d738f69d47&#34;&gt;About gb&lt;/h1&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
