@@ -4,6 +4,7 @@ categories = [ "plugins" ]
 +++
 # gb-vendor
 
+`gb-vendor` is a simple gb plugin that wraps the `go get` command to make it easier to create your initial gb project.
 
 ## Simple example
 
