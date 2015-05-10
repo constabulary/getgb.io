@@ -9,7 +9,7 @@
           <p> {{ $key }} </p>
                 <ul>
                 {{ range $value.Pages }}
-                    <li hugo-nav="{{ .RelPermalink}}"><a href="{{ .Permalink}}"> {{ .LinkTitle }} </a> </li>
+                    <li hugo-nav="{{ .RelPermalink}}"><a href="{{ .RelPermalink}}"> {{ .LinkTitle }} </a> </li>
                 {{ end }}
                 </ul>
           </div>

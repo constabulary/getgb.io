@@ -1,15 +1,14 @@
 +++
 title       = "Installation"
 categories  = [ "docs" ]
+date = "2001-01-10"
 +++
 
 # Installation
 
-This page will help you install *gb*.
-
 ## Prerequisites
 
-*gb* is compatible with Go 1.4. If you haven't installed Go yet, we recommmend using the binary installers available from the [office Go website](http://golang.org/doc/install#install).
+gb is compatible with Go 1.4. If you haven't installed Go yet, we recommmend using the binary installers available from the [office Go website](http://golang.org/doc/install#install).
 
 ## Installation
 
@@ -25,5 +24,5 @@ This page will help you install *gb*.
 
 ## Next Up
 
-Now you've installed *gb*, move on to [setting up your project](/docs/project).
+Now you've installed gb, move on to [setting up your project](/docs/project).
 

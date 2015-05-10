@@ -1,27 +1,27 @@
 +++
 title = "About gb"
 categories = [ "design" ]
+date = "2001-01-02"
 +++
 # About `gb`
 
-`gb` is a proof of concept replacement build tool for the [Go programming language](https://golang.org).
+`gb` is an alternative build tool for the [Go programming language](https://golang.org).
 
-[Read more about the history of gb](/docs/background).
+[Read more about the rational for gb](/rational).
 
 ## Project based
 
-`gb` operates on the concept of a project. A project has the following properties:
+`gb` operates on the concept of a project. A gb project is a workspace for all the Go code that is required to build your project. 
 
-- A project is the consumer of your own source code, and possibly dependencies that your code consumes; nothing consumes the code from a project. Another way of thinking about it is, a project is where package `main` is.
-- A project is a workspace dedicated to your project's code.
-- A project supports multiple locations for source code, at the moment `src/` for your source code, and `vendor/src/` for third party code that you have copied, cloned, forked, or otherwise included in the project.
-- The code that represents an `import` path is controlled by the project, by virtue of being present in one of the source code directories in the project.
+A gb project is a folder on disk that contains a subdirectory named <code>src/</code>. That's it, no environment variables to set. For the rest of this document we'll refer to your <code>gb</code> project as <code>$PROJECT</code>.
+
+You can create as many projects as you like and move between them simply by changing directories.
 
 [Read more about setting up a gb project](/docs/project).
 
 ## Installation
 
-Installing, or upgrading *gb* is super simple (assuming you've already got Go installed)
+Installing, or upgrading gb is super simple (assuming you've already got Go installed)
 
     go get github.com/constabulary/gb/...
 

@@ -54,51 +54,49 @@ Now checkout `github.com/pkg/sftp` to the path it expects
 
 Now, let's try to build this
 
-     % gb build all
-     2015/04/29 13:39:44 INFO project root "/home/dfc/devel/sftp"
-     2015/04/29 13:39:44 INFO build duration: 486.967µs map[]
-     2015/04/29 13:39:44 command "build" failed: failed to resolve package "github.com/pkg/sftp": cannot find package "github.com/kr/fs" in any of:
-             /home/dfc/go/src/github.com/kr/fs (from $GOROOT)
-             /home/dfc/devel/sftp/src/github.com/kr/fs (from $GOPATH)
-             /home/dfc/devel/sftp/vendor/src/github.com/kr/fs
+```
+% gb build all
+FATAL command "build" failed: failed to resolve package "github.com/pkg/sftp": cannot find package "github.com/kr/fs" in any of:
+        /home/dfc/go/src/github.com/kr/fs (from $GOROOT)
+        /home/dfc/devel/demo/src/github.com/kr/fs (from $GOPATH)
+        /home/dfc/devel/demo/vendor/src/github.com/kr/fs
+```
+The build failed because the dependency, `github.com/kr/fs` was not found in the project, which was expected (ignore the message about `$GOPATH` this is a side effect of reusing the `go/build` package for dependency resolution).
 
-The build failed because the dependency, `github.com/kr/fs` was not found in the project, which was expected (ignore the message about `$GOPATH` this is a side effect of reusing the `go/build` package for dependency resolution). So we can use the `gb vendor` plugin to fetch the code for `github.com/kr/fs`, and try again
-
-     % gb vendor github.com/kr/fs
-     2015/04/29 13:42:02 INFO project root "/home/dfc/devel/sftp"
-     % gb build all                                                                                                                   
-     2015/04/29 13:42:06 INFO project root "/home/dfc/devel/sftp"
-     2015/04/29 13:42:06 INFO build duration: 701.994µs map[]
-     2015/04/29 13:42:06 command "build" failed: failed to resolve package "github.com/pkg/sftp": cannot find package "golang.org/x/crypto/ssh" in any of:
-             /home/dfc/go/src/golang.org/x/crypto/ssh (from $GOROOT)
-             /home/dfc/devel/sftp/src/golang.org/x/crypto/ssh (from $GOPATH)
-             /home/dfc/devel/sftp/vendor/src/golang.org/x/crypto/ssh
-
-Nearly, there, just missing the `golang.org/x/crypto/ssh` package, again we'll use `gb vendor`.
-
-      % gb vendor golang.org/x/crypto/ssh
-     2015/04/29 13:44:32 INFO project root "/home/dfc/devel/sftp"
-      % gb build all                                                                                                                   
-     2015/04/29 13:44:40 INFO project root "/home/dfc/devel/sftp"
-     2015/04/29 13:44:40 INFO compile github.com/kr/fs [filesystem.go walk.go]
-     2015/04/29 13:44:40 INFO compile golang.org/x/crypto/ssh [buffer.go certs.go channel.go cipher.go client.go client_auth.go common.go connection.go doc.go handshake.go kex.go keys.go mac.go messages.go mux.go server.go session.go tcpip.go transport.go]
-     2015/04/29 13:44:40 INFO install compile {fs github.com/kr/fs /home/dfc/devel/sftp/vendor/src/github.com/kr/fs}
-     2015/04/29 13:44:41 INFO install compile {ssh golang.org/x/crypto/ssh /home/dfc/devel/sftp/vendor/src/golang.org/x/crypto/ssh}
-     2015/04/29 13:44:41 INFO compile golang.org/x/crypto/ssh/agent [client.go forward.go keyring.go server.go]
-     2015/04/29 13:44:41 INFO compile github.com/pkg/sftp [attrs.go client.go packet.go release.go sftp.go]
-     2015/04/29 13:44:42 INFO install compile {agent golang.org/x/crypto/ssh/agent /home/dfc/devel/sftp/vendor/src/golang.org/x/crypto/ssh/agent}
-     2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/buffered-read-benchmark [main.go]
-     2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/buffered-write-benchmark [main.go]
-     2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/gsftp [main.go]
-     2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/streaming-read-benchmark [main.go]
-     2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/streaming-write-benchmark [main.go]
-     2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/buffered-read-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/buffered-read-benchmark/main.a]
-     2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/gsftp [/tmp/gb786934546/github.com/pkg/sftp/examples/gsftp/main.a]
-     2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/streaming-read-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/streaming-read-benchmark/main.a]
-     2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/streaming-write-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/streaming-write-benchmark/main.a]
-     2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/buffered-write-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/buffered-write-benchmark/main.a]
-     2015/04/29 19:50:58 INFO build duration: 2.535541868s map[compile:1.895628229s link:9.827128875s]
-
+We must fetch these dependencies and place them in the `$PROJECT/vendor/src` directory. 
+```
+% git clone https://github.com/kr/fs vendor/src/github.com/kr/fs
+Cloning into 'vendor/src/github.com/kr/fs'...
+remote: Counting objects: 18, done.
+remote: Total 18 (delta 0), reused 0 (delta 0), pack-reused 18
+Unpacking objects: 100% (18/18), done.
+Checking connectivity... done.
+% gb build all
+FATAL command "build" failed: failed to resolve package "github.com/pkg/sftp": cannot find package "golang.org/x/crypto/ssh" in any of:
+        /home/dfc/go/src/golang.org/x/crypto/ssh (from $GOROOT)
+        /home/dfc/devel/demo/src/golang.org/x/crypto/ssh (from $GOPATH)
+        /home/dfc/devel/demo/vendor/src/golang.org/x/crypto/ssh
+```
+Nearly there, just missing the `golang.org/x/crypto/ssh` package
+```
+% git clone https://github.com/golang/crypto vendor/src/golang.org/x/crypto
+Cloning into 'vendor/src/golang.org/x/crypto'...
+remote: Counting objects: 1869, done.
+remote: Total 1869 (delta 0), reused 0 (delta 0), pack-reused 1869
+Receiving objects: 100% (1869/1869), 1.19 MiB | 550.00 KiB/s, done.
+Resolving deltas: 100% (1248/1248), done.
+Checking connectivity... done.
+lucky(~/devel/demo) % gb build all
+github.com/kr/fs
+golang.org/x/crypto/ssh
+golang.org/x/crypto/ssh/agent
+github.com/pkg/sftp
+github.com/pkg/sftp/examples/buffered-read-benchmark
+github.com/pkg/sftp/examples/buffered-write-benchmark
+github.com/pkg/sftp/examples/gsftp
+github.com/pkg/sftp/examples/streaming-read-benchmark
+github.com/pkg/sftp/examples/streaming-write-benchmark
+```
 And now it builds. Some things to note
 
 - The package name `all` matches all the packages inside your project's `src/` directory. It's a simple way to build everything, you can use other import paths and globs.
@@ -119,17 +117,28 @@ Now, we know this project uses `godeps`, so already includes all its dependencie
      % mv src/github.com/kelseyhightower/confd/Godeps/_workspace/src/* vendor/src/
 
 Let's see if it builds
-
-     % gb build all
-     2015/04/29 19:52:16 INFO project root "/home/dfc/devel/confd"
-     2015/04/29 19:52:16 INFO compile github.com/kelseyhightower/confd [confd.go config.go node_var.go version.go]
-     2015/04/29 19:52:16 INFO compile github.com/kelseyhightower/confd/integration/zookeeper [main.go]
-     2015/04/29 19:52:16 INFO link /home/dfc/devel/confd/bin/zookeeper [/tmp/gb934182157/github.com/kelseyhightower/confd/integration/zookeeper/main.a]
-     2015/04/29 19:52:16 INFO link /home/dfc/devel/confd/bin/confd [/tmp/gb934182157/github.com/kelseyhightower/confd/main.a]
-     2015/04/29 19:52:17 INFO build duration: 1.7575955s map[compile:405.681764ms link:2.275663206s]
-
-And it does.
+```
+% gb build all
+github.com/BurntSushi/toml
+github.com/hashicorp/consul/api
+github.com/kelseyhightower/confd/backends/env
+github.com/coreos/go-etcd/etcd
+github.com/garyburd/redigo/internal
+github.com/samuel/go-zookeeper/zk
+github.com/Sirupsen/logrus
+github.com/kelseyhightower/memkv
+github.com/garyburd/redigo/redis
+github.com/kelseyhightower/confd/log
+github.com/kelseyhightower/confd/backends/etcd
+github.com/kelseyhightower/confd/backends/consul
+github.com/kelseyhightower/confd/backends/redis
+github.com/kelseyhightower/confd/backends/zookeeper
+github.com/kelseyhightower/confd/integration/zookeeper
+github.com/kelseyhightower/confd/backends
+github.com/kelseyhightower/confd/resource/template
+github.com/kelseyhightower/confd
+```
 
 # Wrapping up
 
-Setting up, or converting code to a `gb` project is simple. Once you're done, just check the whole project into your source control.
+Setting up, or converting code to a `gb` project is simple. Once you've done this you should check your `$PROJECT` directory into a source control. This includes any source you have copied from other projects into your `$PROJECT/vendor/src/` directory.
