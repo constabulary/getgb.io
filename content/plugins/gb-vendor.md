@@ -6,6 +6,14 @@ categories = [ "plugins" ]
 
 `gb-vendor` is a simple gb plugin that wraps the `go get` command to make it easier to create your initial gb project.
 
+# Installation
+
+`gb-vendor` is not included with `gb`. Installation is currently via `go get`
+
+    go get -u -v github.com/constabulary/gb-vendor
+
+# Usage
+
 ## Simple example
 
 In this example we'll create a `gb` project from the `github.com/pkg/sftp` codebase. 
@@ -67,11 +75,4 @@ Nearly, there, just missing the `golang.org/x/crypto/ssh` package, again we'll u
 2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/buffered-write-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/buffered-write-benchmark/main.a]
 2015/04/29 19:50:58 INFO build duration: 2.535541868s map[compile:1.895628229s link:9.827128875s]</pre>
 
-And now it builds. Some things to note
-
-- The package name `all` matches all the packages inside your project's `src/` directory. It's a simple way to build everything, you can use other import paths and globs.
-- There is no way to build your vendored source, it will be built if required to build your code in the `src/` directory.
-
-# Wrapping up
-
-Setting up, or converting code to a `gb` project is simple. Once you're done, just check the whole project into your source control.
+And now it builds.

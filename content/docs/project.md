@@ -65,6 +65,8 @@ Now your project has some code in it, we can compile and run it
 % <b>bin/hello</b>
 Hello gb</pre>
 
+## Benefits of project based workflows vs GOPATH
+
 ## Next steps
 
 Now that you've created a gb project, check the entire $PROJECT into the source control of your choosing.

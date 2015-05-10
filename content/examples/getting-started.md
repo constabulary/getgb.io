@@ -1,6 +1,7 @@
 +++
 date        = "2014-05-07T11:27:27-04:00"
 title       = "Getting started"
+categories  = [ "examples" ]
 +++
 
 # Getting started
