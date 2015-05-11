@@ -7,7 +7,7 @@ date = "2001-01-02"
 
 `gb` is an alternative build tool for the [Go programming language](https://golang.org).
 
-[Read more about the rational for gb](/rational).
+[Read more about the rationale for gb](/rationale).
 
 ## Project based
 
