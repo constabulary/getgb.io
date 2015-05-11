@@ -1,144 +1,242 @@
 +++
 date        = "2014-05-07T11:27:27-04:00"
 title       = "Getting started"
-categories  = [ "examples" ]
 +++
 
-# Getting started
+# Quick Overview
 
-This document is a guide to introduce people to the `gb` project structure. A `gb` project is conceptually a `$GOPATH` per project, but saying that doesn't really help explain how to set up a new project; hence this document.
+This document is a guide to show you how to structure `gb` based Go projects and use `gb` to build those projects.
 
-# Creating an empty project
+A typical `gb` project may look like this on disk:
 
-A `gb` project is defined as any directory that has a `src/` subdirectory. The simplest possible `gb` project would be
+    /home/dfc/projects/engine/
+                        |——— src/
+                        |——— cmd/
+                              |——— engine/
+                                    |——— main.go
+                        |——— data/
+                        |——— services/
+                        |——— vendor/
+                              |——— src/
+                                    |——— github.com/codegangsta/cli/
+
+Since the `gb` tool can identify the workspace location of the project, imports can be referenced based on their location inside the `src/` and `vendor/src/` directories:
+
+    import (
+        "data"
+        "services"
+
+        "github.com/codegangsta/cli"
+    )
+
+Building the project just requires running `gb build` from anywhere inside the `src/` directory.
+
+# Sample Projects
+
+Let's walk through some steps to create test projects you can try on your own.
+
+### Project 1
+
+The simplest possible `gb` project to create could look like this:
 
      % mkdir -p ~/project/src/
      % cd ~/project
 
-`~/project` is therefore a `gb` project.
+     /home/dfc/project/
+                |——— src/
 
-Source inside a `gb` project follows the same rules as the `go` tool, see the [Workspaces section of the Go getting started document](https://golang.org/doc/code.html#Workspaces). All Go code goes in packages, and packages are subdirectories inside the project's `src/` directory
+After running those commands, `~/project` is now a `gb` project.
+
+### Project 2
+
+Next, let's create a hello world program as a `gb` project:
 
      % cd ~/project
-     % mkdir -p src/cmd/helloworld
-     % cat <<EOF > src/cmd/helloworld/helloworld.go
+     % mkdir -p src/cmd/hello
+     
+     /home/dfc/project/
+                |——— src/
+                      |——— cmd/
+                            |——— hello/
+
+Source code inside a `gb` project follows the same rules as the [`Go tool`](https://golang.org/doc/code.html#Workspaces). Inside of a `gb` project, we create packages inside the `src/` directory of the workspace.
+
+Now, let's add a source code file named `hello.go` inside the `hello` package:
+
+     % cat <<EOF > src/cmd/hello/hello.go
      package main
      
      import "fmt"
       
      func main() {
-             fmt.Println("Hello world")
+             fmt.Println("Hello World")
      }
      EOF
-     % gb build cmd/helloworld
 
-will build the small `helloworld` command.
+Finally, we can build the project to create the small comamnd named `hello` that displays `Hello World`.
 
-# Converting an existing project
+     % gb build cmd/hello
 
-This section shows how to construct a `gb` project using existing code bases.
+# Converting Existing Projects
 
-## Simple example
+Let's walk through some examples of converting an existing project into a `gb` project.
 
-In this example we'll create a `gb` project from the `github.com/pkg/sftp` codebase. 
+### Simple Example
 
-First, create a project,
+In this example, we create a `gb` project from the `github.com/pkg/sftp` codebase. 
+
+To begin, we create a project workspace:
 
      % mkdir -p ~/devel/sftp
      % cd ~/devel/sftp
 
-Now checkout `github.com/pkg/sftp` to the path it expects
+     /home/dfc/devel/
+                |——— sftp/
+
+Next, we create the directory structure for the `sftp` codebase we are converting:
 
      % mkdir -p src/github.com/pkg/sftp
+
+     /home/dfc/devel/
+                |——— sftp/
+                      |——— src/
+                            |——— github.com/
+                                  |——— pkg/
+                                        |——— sftp/
+
+Finally, we checkout `github.com/pkg/sftp`, placing the code inside the directory we created:
+
      % git clone https://github.com/pkg/sftp src/github.com/pkg/sftp
 
-Now, let's try to build this
+With the code inside the `gb` project, we can now build the code. We are using the `all` option to have `gb` build all the packages inside the project:
 
-```
-% gb build all
-FATAL command "build" failed: failed to resolve package "github.com/pkg/sftp": cannot find package "github.com/kr/fs" in any of:
-        /home/dfc/go/src/github.com/kr/fs (from $GOROOT)
-        /home/dfc/devel/demo/src/github.com/kr/fs (from $GOPATH)
-        /home/dfc/devel/demo/vendor/src/github.com/kr/fs
-```
-The build failed because the dependency, `github.com/kr/fs` was not found in the project, which was expected (ignore the message about `$GOPATH` this is a side effect of reusing the `go/build` package for dependency resolution).
+     % gb build all
+     2015/04/29 13:39:44 INFO project root "/home/dfc/devel/sftp"
+     2015/04/29 13:39:44 INFO build duration: 486.967µs map[]
+     2015/04/29 13:39:44 command "build" failed: failed to resolve package "github.com/pkg/sftp": cannot find package "github.com/kr/fs" in any of:
+             /home/dfc/go/src/github.com/kr/fs (from $GOROOT)
+             /home/dfc/devel/sftp/src/github.com/kr/fs (from $GOPATH)
+             /home/dfc/devel/sftp/vendor/src/github.com/kr/fs
 
-We must fetch these dependencies and place them in the `$PROJECT/vendor/src` directory. 
-```
-% git clone https://github.com/kr/fs vendor/src/github.com/kr/fs
-Cloning into 'vendor/src/github.com/kr/fs'...
-remote: Counting objects: 18, done.
-remote: Total 18 (delta 0), reused 0 (delta 0), pack-reused 18
-Unpacking objects: 100% (18/18), done.
-Checking connectivity... done.
-% gb build all
-FATAL command "build" failed: failed to resolve package "github.com/pkg/sftp": cannot find package "golang.org/x/crypto/ssh" in any of:
-        /home/dfc/go/src/golang.org/x/crypto/ssh (from $GOROOT)
-        /home/dfc/devel/demo/src/golang.org/x/crypto/ssh (from $GOPATH)
-        /home/dfc/devel/demo/vendor/src/golang.org/x/crypto/ssh
-```
-Nearly there, just missing the `golang.org/x/crypto/ssh` package
-```
-% git clone https://github.com/golang/crypto vendor/src/golang.org/x/crypto
-Cloning into 'vendor/src/golang.org/x/crypto'...
-remote: Counting objects: 1869, done.
-remote: Total 1869 (delta 0), reused 0 (delta 0), pack-reused 1869
-Receiving objects: 100% (1869/1869), 1.19 MiB | 550.00 KiB/s, done.
-Resolving deltas: 100% (1248/1248), done.
-Checking connectivity... done.
-lucky(~/devel/demo) % gb build all
-github.com/kr/fs
-golang.org/x/crypto/ssh
-golang.org/x/crypto/ssh/agent
-github.com/pkg/sftp
-github.com/pkg/sftp/examples/buffered-read-benchmark
-github.com/pkg/sftp/examples/buffered-write-benchmark
-github.com/pkg/sftp/examples/gsftp
-github.com/pkg/sftp/examples/streaming-read-benchmark
-github.com/pkg/sftp/examples/streaming-write-benchmark
-```
-And now it builds. Some things to note
+When we build the project, it fails because we are missing some dependencies the `gb` tool could not locate. When this happens, we can use the `vendor` command to fetch the dependencies and vendor them inside the project:
 
-- The package name `all` matches all the packages inside your project's `src/` directory. It's a simple way to build everything, you can use other import paths and globs.
-- There is no way to build your vendored source, it will be built if required to build your code in the `src/` directory.
+     % gb vendor github.com/kr/fs
+     2015/04/29 13:42:02 INFO project root "/home/dfc/devel/sftp"
 
-## More complicated example
+     /home/dfc/devel/
+                |——— sftp/
+                      |——— src/
+                            |——— github.com/
+                                  |——— pkg/
+                                        |——— sftp/
+                            |——— vendor/
+                                  |——— src/
+                                        |——— github.com/
+                                              |——— kr/
+                                                    |——— fs/
 
-For the second example we'll take a project that uses `godep` vendoring and convert it to be a `gb` project. First we'll need to setup a project and get the source
+After running the `vendor` command, we have the missing code for the dependency cloned inside the new `vendor/src` directory. The canonical path for the dependency remains in tact under the `vendor/src` directory.
+
+When we try to build the project, it fails once again because of more missing dependencies:
+
+     % gb build all                                                                                                                   
+     2015/04/29 13:42:06 INFO project root "/home/dfc/devel/sftp"
+     2015/04/29 13:42:06 INFO build duration: 701.994µs map[]
+     2015/04/29 13:42:06 command "build" failed: failed to resolve package "github.com/pkg/sftp": cannot find package "golang.org/x/crypto/ssh" in any of:
+             /home/dfc/go/src/golang.org/x/crypto/ssh (from $GOROOT)
+             /home/dfc/devel/sftp/src/golang.org/x/crypto/ssh (from $GOPATH)
+             /home/dfc/devel/sftp/vendor/src/golang.org/x/crypto/ssh
+
+We need to use the `vendor` command once more to pull down the code for this final missing dependency:
+
+      % gb vendor golang.org/x/crypto/ssh
+     2015/04/29 13:44:32 INFO project root "/home/dfc/devel/sftp"
+
+     /home/dfc/devel/
+                |——— sftp/
+                      |——— src/
+                            |——— github.com/
+                                  |——— pkg/
+                                        |——— sftp/
+                            |——— vendor/
+                                  |——— src/
+                                        |——— github.com/
+                                              |——— kr/
+                                                    |——— fs/
+                                        |——— golang.org/
+                                              |——— x/
+                                                    |——— crypto/
+                                                          |——— ssh/
+
+Now when we build the project, everything builds successfully:
+
+     % gb build all                                                                                                                   
+     2015/04/29 13:44:40 INFO project root "/home/dfc/devel/sftp"
+     2015/04/29 13:44:40 INFO compile github.com/kr/fs [filesystem.go walk.go]
+     2015/04/29 13:44:40 INFO compile golang.org/x/crypto/ssh [buffer.go certs.go channel.go cipher.go client.go client_auth.go common.go connection.go doc.go handshake.go kex.go keys.go mac.go messages.go mux.go server.go session.go tcpip.go transport.go]
+     2015/04/29 13:44:40 INFO install compile {fs github.com/kr/fs /home/dfc/devel/sftp/vendor/src/github.com/kr/fs}
+     2015/04/29 13:44:41 INFO install compile {ssh golang.org/x/crypto/ssh /home/dfc/devel/sftp/vendor/src/golang.org/x/crypto/ssh}
+     2015/04/29 13:44:41 INFO compile golang.org/x/crypto/ssh/agent [client.go forward.go keyring.go server.go]
+     2015/04/29 13:44:41 INFO compile github.com/pkg/sftp [attrs.go client.go packet.go release.go sftp.go]
+     2015/04/29 13:44:42 INFO install compile {agent golang.org/x/crypto/ssh/agent /home/dfc/devel/sftp/vendor/src/golang.org/x/crypto/ssh/agent}
+     2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/buffered-read-benchmark [main.go]
+     2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/buffered-write-benchmark [main.go]
+     2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/gsftp [main.go]
+     2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/streaming-read-benchmark [main.go]
+     2015/04/29 19:50:55 INFO compile github.com/pkg/sftp/examples/streaming-write-benchmark [main.go]
+     2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/buffered-read-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/buffered-read-benchmark/main.a]
+     2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/gsftp [/tmp/gb786934546/github.com/pkg/sftp/examples/gsftp/main.a]
+     2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/streaming-read-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/streaming-read-benchmark/main.a]
+     2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/streaming-write-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/streaming-write-benchmark/main.a]
+     2015/04/29 19:50:56 INFO link /home/dfc/devel/sftp/bin/buffered-write-benchmark [/tmp/gb786934546/github.com/pkg/sftp/examples/buffered-write-benchmark/main.a]
+     2015/04/29 19:50:58 INFO build duration: 2.535541868s map[compile:1.895628229s link:9.827128875s]
+
+With all the dependencies vendored, the project now builds. Thanks to the way `gb` vendors code and manages the project's workspace, none of the code brought into the project needed to have their imports rewritten.
+
+### GODEP Example
+
+In this example, we take a project that is using `Godep` to vendor dependencies and we convert it to be a `gb` project.
+
+To begin, we create a project workspace and clone the source code:
 
      % mkdir -p ~/devel/confd
      % cd ~/devel/confd
+
      % mkdir -p src/github.com/kelseyhightower/confd
      % git clone https://github.com/kelseyhightower/confd src/github.com/kelseyhightower/confd  
 
-Now, we know this project uses `godeps`, so already includes all its dependencies, so we just need to rearrange things a bit.
+     /home/dfc/devel/
+                |——— confd/
+                      |——— src/
+                            |——— github.com/
+                                  |——— kelseyhightower/
+                                        |——— confd/
+
+Next, we want to move the `Godep` vendored dependencies out of `Godeps` and into the `gb` projects `vendor/src` directory:
  
      % mkdir -p vendor/src/
      % mv src/github.com/kelseyhightower/confd/Godeps/_workspace/src/* vendor/src/
 
-Let's see if it builds
-```
-% gb build all
-github.com/BurntSushi/toml
-github.com/hashicorp/consul/api
-github.com/kelseyhightower/confd/backends/env
-github.com/coreos/go-etcd/etcd
-github.com/garyburd/redigo/internal
-github.com/samuel/go-zookeeper/zk
-github.com/Sirupsen/logrus
-github.com/kelseyhightower/memkv
-github.com/garyburd/redigo/redis
-github.com/kelseyhightower/confd/log
-github.com/kelseyhightower/confd/backends/etcd
-github.com/kelseyhightower/confd/backends/consul
-github.com/kelseyhightower/confd/backends/redis
-github.com/kelseyhightower/confd/backends/zookeeper
-github.com/kelseyhightower/confd/integration/zookeeper
-github.com/kelseyhightower/confd/backends
-github.com/kelseyhightower/confd/resource/template
-github.com/kelseyhightower/confd
-```
+     /home/dfc/devel/
+                |——— confd/
+                      |——— src/
+                            |——— github.com/
+                                  |——— kelseyhightower/
+                                        |——— confd/
+                            |——— vendor/
+                                  |——— src/
+                                        |——— {Code From Godep}
 
-# Wrapping up
+Now when we build the project, everything builds successfully:
 
-Setting up, or converting code to a `gb` project is simple. Once you've done this you should check your `$PROJECT` directory into a source control. This includes any source you have copied from other projects into your `$PROJECT/vendor/src/` directory.
+     % gb build all
+     2015/04/29 19:52:16 INFO project root "/home/dfc/devel/confd"
+     2015/04/29 19:52:16 INFO compile github.com/kelseyhightower/confd [confd.go config.go node_var.go version.go]
+     2015/04/29 19:52:16 INFO compile github.com/kelseyhightower/confd/integration/zookeeper [main.go]
+     2015/04/29 19:52:16 INFO link /home/dfc/devel/confd/bin/zookeeper [/tmp/gb934182157/github.com/kelseyhightower/confd/integration/zookeeper/main.a]
+     2015/04/29 19:52:16 INFO link /home/dfc/devel/confd/bin/confd [/tmp/gb934182157/github.com/kelseyhightower/confd/main.a]
+     2015/04/29 19:52:17 INFO build duration: 1.7575955s map[compile:405.681764ms link:2.275663206s]
+
+# Wrapping Up
+
+Setting up or converting code into a `gb` project just takes a few steps. Once you're done, just check the whole project into your source control. Now you have a way to reproduce the build your project without the need to rewrite import paths for vendored code.
