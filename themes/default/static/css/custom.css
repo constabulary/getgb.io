@@ -1,0 +1,96 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+    padding-bottom: 0px;
+    padding-top: 0px;
+	font-family: 'Ubuntu', sans-serif;
+}
+a {
+	color: #f79e45;
+}
+h1 {
+	color: #3b3d55;
+}
+.btn-orange {
+	background: #f79e45;
+	border-color: #f79e45;
+	color: #FFFFFF;
+}
+.row {
+	margin: 0;
+}
+.navbar {
+	background: none repeat scroll 0 0 #3b3c54;
+	color: red;
+	border-radius: 0;
+	margin: 0;
+}
+.navbar ul li a{
+	color: #FFFFFF;
+	text-shadow: none;
+}
+.nav > li > a:focus, .nav > li > a:hover {
+    background-color: #8255a3;
+    text-decoration: none;
+}
+.navbar-toggle .icon-bar {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+.jumbotron {
+	background: url(../images/geometry.png);
+	padding: 20px 0 40px;
+	margin-bottom: 0;
+}
+.jumbotron img {
+	margin: 20px 0px;
+}
+.jumbotron p {
+	color: #FFFFFF;
+	font-weight: 400;
+	text-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+.jumbotron a.btn {
+	padding: 10px 20px !important;
+	margin-bottom: 20px;
+}
+.jumbotron pre {
+	background: none repeat scroll 0 0 rgba(255, 255, 255, 0.75);
+    border: medium none;
+    color: #8255a3;
+    font-size: 25px;
+    font-weight: 200;
+	text-shadow: 0 1px 0 #ffffff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.row.marketing1 {
+    background: none repeat scroll 0 0 #f3feff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+    color: #5a5b7f;
+    padding-bottom: 20px;
+    padding-top: 30px;
+}
+.row.marketing1 ul li {
+	padding: 5px 0px;
+}
+.row.marketing1 h4 {
+	color: #3b3c54;
+    font-size: 24px;
+    text-shadow: 0 1px 0 #fff;
+}
+.row.marketing2 {
+	padding-bottom: 20px;
+    padding-top: 30px;
+	color: #5a5b7f;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+	.jumbotron pre {
+		font-size: 12px;
+	}
+}
+@media (min-width: 481px) and (max-width: 767px) {
+	.jumbotron pre {
+		font-size: 19px;
+	}
+}
