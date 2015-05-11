@@ -65,6 +65,7 @@ The build failed because the dependency, `github.com/kr/fs` was not found in the
 
 We must fetch these dependencies and place them in the `$PROJECT/vendor/src` directory. 
 ```
+% mkdir -p vendor/src/github.com/kr/fs
 % git clone https://github.com/kr/fs vendor/src/github.com/kr/fs
 Cloning into 'vendor/src/github.com/kr/fs'...
 remote: Counting objects: 18, done.
@@ -79,6 +80,7 @@ FATAL command "build" failed: failed to resolve package "github.com/pkg/sftp": c
 ```
 Nearly there, just missing the `golang.org/x/crypto/ssh` package
 ```
+% mkdir -p vendor/src/golang.org/x/crypto
 % git clone https://github.com/golang/crypto vendor/src/golang.org/x/crypto
 Cloning into 'vendor/src/golang.org/x/crypto'...
 remote: Counting objects: 1869, done.
@@ -111,7 +113,7 @@ For the second example we'll take a project that uses `godep` vendoring and conv
      % mkdir -p src/github.com/kelseyhightower/confd
      % git clone https://github.com/kelseyhightower/confd src/github.com/kelseyhightower/confd  
 
-Now, we know this project uses `godeps`, so already includes all its dependencies, so we just need to rearrange things a bit.
+Now, we know this project uses `godeps`, so already includes all its dependencies, we just need to rearrange things a bit.
  
      % mkdir -p vendor/src/
      % mv src/github.com/kelseyhightower/confd/Godeps/_workspace/src/* vendor/src/

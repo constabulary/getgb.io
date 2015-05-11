@@ -5,7 +5,7 @@ date = "2001-01-08"
 +++
 # Usage
 
-`gb` is the main command. It supports subcommands, of which there are currently two:
+`gb` is the main command. It supports sub-commands, of which there are currently two:
 
 - `build` - which builds your code.
 - `test` - which behaves identically to `gb build`, but runs tests.
@@ -18,7 +18,7 @@ A gb project is defined as any directory that contains a `src/` subdirectory. gb
 
 [Read more about managing gb projects](/docs/project)
 
-In the event you wish to override this autodetection mechanism, the `-R` flag can be used to supply a project root.
+In the event you wish to override this auto detection mechanism, the `-R` flag can be used to supply a project root.
 
 ## Arguments
 
@@ -45,7 +45,6 @@ The following flags are supported by `gb`. Note that these are flags to subcomma
 - `-v` - increases verbosity, effectively lowering the output level from INFO to DEBUG.
 - `-q` - decreases verbosity, effectively raising the output level to ERROR. In a successful build, no output will be displayed.
 - `-goroot` - alters the path to the go toolchain in use, eg `gb build -goroot=$HOME/go1.4`.
-- `-goos`, `-goarch` - analogous to `env GOOS=... GOARCH=... gb`.
 - `-f` - ignore cached packages if present, new packages built will overwrite any cached packages. This effectively disables incremental compilation.
 - `-F` - do not cache packages, cached packages will still be used for incremental compilation, `-f -F` is advised to disable the package caching system.
 

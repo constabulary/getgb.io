@@ -1,6 +1,5 @@
 +++
 title       = "Editor support"
-categories  = [ "docs" ]
 date	= "2001-01-02"
 +++
 

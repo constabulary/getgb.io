@@ -13,11 +13,11 @@ A gb project is a folder on disk that contains a sub directory named <code>src/<
 
 gb projects differentiate between _your stuff_, the code you've written, and _their stuff_, the code that your code depends on. We call _their stuff_ vendored code. gb makes a distinction between your code and vendored code. 
 
-Inside a gb project _your stuff_, the source code of your project goes in 
+Inside a gb project, _your stuff_, the source code of your project goes in 
 
     $PROJECT/src/
 
-The source code that others' have written, _their stuff_, goes in
+The source code that other's have written, _their stuff_, goes in
 
     $PROJECT/vendor/src/
 
@@ -48,15 +48,15 @@ note: gb requires you to place all your code in packages inside `$PROJECT/src/`.
 Inside your source directory, let's create a package
 
 <pre>% <b>mkdir -p $PROJECT/src/hello</b>
-% <b>cat > hello.go <<EOF
+% <b>cat > hello.go &lt;&lt;EOF
 package main
-> 
-> import "fmt"
-> 
-> func main() {
->         fmt.Println("Hello gb")
-> }
-> EOF</b></pre>
+ 
+import "fmt"
+ 
+func main() {
+         fmt.Println("Hello gb")
+}
+EOF</b></pre>
 
 ## Compiling
 
@@ -67,7 +67,7 @@ hello
 % <b>bin/hello</b>
 Hello gb</pre>
 
-## Creating a source control repository
+## Place your project into a source control repository
 
 Now that you've created a gb project, you should share that project with others by check the entire contents of `$PROJECT` into the source control of your choosing. This includes any source you have copied from other projects into your `$PROJECT/vendor/src/` directory.
 
