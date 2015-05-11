@@ -1,10 +1,10 @@
 +++
-title = "Design rational"
+title = "Design rationale"
 categories = [ "design" ]
 date = "2001-01-01"
 +++
 
-# Design rational
+# Design rationale
 
 ## Reproducible builds
 
