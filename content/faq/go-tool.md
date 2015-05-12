@@ -1,5 +1,5 @@
 +++
-title = "Why didn’t you contribute back to the go tool ?"
+title = "Why didn’t you contribute back to the go tool?"
 +++
 The Go authors agree that vendoring, taking a copy of your dependencies, is the path to repeatable builds -- we just disagree on the method.
 

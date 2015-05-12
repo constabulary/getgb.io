@@ -36,7 +36,7 @@ However, the `go` tool does not make vendoring easy. A repository fetched with `
 
 To work around this limitation, the recommended approach is to rewrite the source code you depend on to a new import path, relative to your code, so that it will be checked out in the location that is expected by the compiler, albeit with a convoluted import path.
 
-## Why a new build tool ?
+## Why a new build tool?
 
 It is clear that the reason Go developers do not have reproducible builds today stems from `go get`. Import rewriting and placing tags or version numbers in the package's import paths are work arounds layered on top of the limitations of `go get`.
 
