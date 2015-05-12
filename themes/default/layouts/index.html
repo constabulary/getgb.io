@@ -1,46 +1,53 @@
 {{ partial "header.html" . }}
       <div class="jumbotron">
-        <h1><code>gb</code></h1>
-        <p class="lead">A project based build tool for the Go programming language.</p>
-        <p><a href="/docs/install">Install gb today</a></p>
-	<pre>go get github.com/constabulary/gb/...</pre>
+      	<div class="container">
+            <img class="zoomIn animated" src="images/gb.svg" width="200" />
+            <p class="lead">The project based build tool for the Go programming language.</p>
+            <a class="btn btn-orange" href="/docs/install">Install gb today</a>
+            <pre>go get github.com/constabulary/gb/...</pre>
+        </div><!-- container -->
+      </div><!-- jumbotron -->
 
-      </div>
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>Features</h4>
-          <ul>
-            <li>Project based workflow</li>
-            <li>Automatic project detection</li>
-            <li>Zero configuration files</li>
-            <li>Works on Windows</li>
-	  </ul>
-        </div>
-
-        <div class="col-lg-6">
-          <h4>Benefits</h4>
-          <ul>
-            <li>Reliable, reproducible, builds without import rewriting</li>
-            <li>No enviroment variables to set</li>
-            <li>Multiple working copies without changing environment variables</li>
-            <li>Backwards compatible with <code>$GOPATH</code></li>
-	  </ul>
-        </div>
-      </div>
-      <div class="row marketing">
-        <div class="col-lg-12">
-          <h3>News</h3>
-{{range first 5 (where .Data.Pages "Section" "news") }}
-            <div class="summary">
-              <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
-{{ .Summary }}
+      <div class="row marketing1">
+      	<div class="container">
+            <div class="col-md-6">
+                <h4><i class="glyphicon glyphicon-th-list"></i> Features</h4>
+                <ul>
+                    <li>Project based workflow</li>
+                    <li>Automatic project detection</li>
+                    <li>Zero configuration files</li>
+                    <li>Works on Windows</li>
+                </ul>
+            </div><!-- col-md-6 -->
+    
+            <div class="col-md-6">
+                <h4><i class="glyphicon glyphicon-check"></i> Benefits</h4>
+                <ul>
+                    <li>Reliable, reproducible, builds without import rewriting</li>
+                    <li>No enviroment variables to set</li>
+                    <li>Multiple working copies without changing environment variables</li>
+                    <li>Backwards compatible with <code>$GOPATH</code></li>
+                </ul>
+            </div><!-- col-md-6 -->
+        </div><!-- container -->
+      </div><!-- row -->
+      
+      <div class="row marketing2">
+      	<div class="container">
+            <div class="col-lg-12">
+              <h3>News</h3>
+    {{range first 5 (where .Data.Pages "Section" "news") }}
+                <div class="summary">
+                  <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+    {{ .Summary }}
+                </div>
+    {{ if .Truncated }}
+                <div class="read-more-link">
+                  <a href="{{ .RelPermalink }}">Read More…</a>
+                </div>
+    {{ end }}
             </div>
-{{ if .Truncated }}
-            <div class="read-more-link">
-              <a href="{{ .RelPermalink }}">Read More…</a>
-             </div>
-{{ end }}
-        </div>
+        </div><!-- container -->
       </div>
-{{ end }}
+   {{ end }}
 {{ partial "footer.html" . }}
