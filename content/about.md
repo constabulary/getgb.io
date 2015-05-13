@@ -9,7 +9,7 @@ date = "2001-01-02"
 
 [Read more about the rationale for gb](/rationale).
 
-## Project based
+## Project Based
 
 `gb` operates on the concept of a project. A gb project is a workspace for all the Go code that is required to build your project. 
 
@@ -27,6 +27,6 @@ Installing, or upgrading gb is super simple (assuming you've already got Go inst
 
 [Read more about installing and using gb](/docs/install).
 
-## Next up
+## Next Up
 
 Now you've got gb installed, move on the to [setting up a gb project](/docs/project).
