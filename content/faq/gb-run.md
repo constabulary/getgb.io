@@ -1,5 +1,5 @@
 +++
-title = "Why isn't there a gb run command ?"
+title = "Why isn't there a gb run command?"
 +++
 gb is a project based tool. Every subcommand works on a list of import paths (packages) within that project, and most default to "all packages in the project".
 

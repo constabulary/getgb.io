@@ -1,5 +1,5 @@
 +++
-title = "Why not wrap the go tool ?"
+title = "Why not wrap the go tool?"
 +++
 I think the fact that gb does not just wrap the go tool is one if its distinguishing features.
 
@@ -11,4 +11,4 @@ The second reason is, while you can construct an equivalent line of shell to mim
 
 I think there is also value in convention. I chose vendor/src arbitrarily because that's what it was called in Rails. Without this convention people would use 3pp, external, etc, ie everyone would come up with their own naming convention, and suddenly your not talking one shell script, but one shell script per project, along with various configuration flags, etc.
 
-So, what does gb do ? Nothing that you couldn't do by hand. But people don't want to do things by hand, hence gb.
+So, what does gb do? Nothing that you couldn't do by hand. But people don't want to do things by hand, hence gb.
