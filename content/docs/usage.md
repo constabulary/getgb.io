@@ -8,11 +8,11 @@ date = "2001-01-08"
 - `build` - which builds your code.
 - `test` - which behaves identically to `gb build`, but runs tests.
 
-## Project root auto detection
+## Project Root Auto Detection
 
-*gb* automatically detects your project's root directory based on your current working directory.
+`gb` automatically detects your project's root directory based on your current working directory.
 
-A gb project is defined as any directory that contains a `src/` subdirectory. gb automatically detects the root of the project by looking at the current working directory and walking backwards until it finds a directory that contains a `src/` subdirectory.
+A `gb` project is defined as any directory that contains a `src/` subdirectory. `gb` automatically detects the root of the project by looking at the current working directory and walking backwards until it finds a directory that contains a `src/` subdirectory.
 
 [Read more about managing gb projects](/docs/project)
 
@@ -29,9 +29,9 @@ Arguments to `gb` subcommands are package import paths or globs relative to the 
 
 Other subcommands, like `test`, `vendor`, etc follow the same rule.
 
-*note*: only import paths within the `src/` directory will match, it is not possible to build source from the `vendor/src/` directory; it will be built if needed by virtue of being imported by a package in the `src/` directory.
+Note: Only import paths within the `src/` directory will match, it is not possible to build source from the `vendor/src/` directory; it will be built if needed by virtue of being imported by a package in the `src/` directory.
 
-## Incremental compilation
+## Incremental Compilation
 
 By default `gb` always performs incremental compilation and caches the results in `$PROJECT/pkg/`. See the Flags section for options to alter this behaviour.
 

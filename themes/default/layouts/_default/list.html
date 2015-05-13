@@ -1,0 +1,14 @@
+{{ partial "header.html" . }}
+<div class="row">
+<div class="container">
+<div class="col-md-12">
+<h1>{{ .Title }}</h1>
+{{ range .Data.Pages }}
+<li>
+<a href="{{ .RelPermalink }}">{{ .Title }}</a>
+</li>
+{{ end }}
+</div><!-- col-md-12 -->
+</div><!-- container -->
+</div><!-- row -->
+{{ partial "footer.html" . }}
