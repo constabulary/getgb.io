@@ -3,8 +3,6 @@ title = "Usage"
 categories = [ "docs" ]
 date = "2001-01-08"
 +++
-# Usage
-
 `gb` is the main command. It supports sub-commands, of which there are currently two:
 
 - `build` - which builds your code.

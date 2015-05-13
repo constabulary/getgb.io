@@ -1,10 +1,8 @@
 +++
 title = "About gb"
-categories = [ "design" ]
+categories = [ "Design" ]
 date = "2001-01-02"
 +++
-# About `gb`
-
 `gb` is an alternative build tool for the [Go programming language](https://golang.org).
 
 [Read more about the rationale for gb](/rationale).

@@ -37,17 +37,17 @@
             <div class="col-lg-12">
               <h3>News</h3>
     {{range first 5 (where .Data.Pages "Section" "news") }}
-                <div class="summary">
-                  <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+              <div class="summary">
+                <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
     {{ .Summary }}
-                </div>
+              </div>
     {{ if .Truncated }}
-                <div class="read-more-link">
-                  <a href="{{ .RelPermalink }}">Read More…</a>
-                </div>
+              <div class="read-more-link">
+                <a href="{{ .RelPermalink }}">Read More…</a>
+              </div>
     {{ end }}
+   {{ end }}
             </div>
         </div><!-- container -->
       </div>
-   {{ end }}
 {{ partial "footer.html" . }}

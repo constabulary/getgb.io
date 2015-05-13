@@ -3,9 +3,6 @@ title       = "Installation"
 categories  = [ "docs" ]
 date = "2001-01-10"
 +++
-
-# Installation
-
 ## Prerequisites
 
 gb is compatible with Go 1.4. If you haven't installed Go yet, we recommend using the binary installers available from the [official Go website](http://golang.org/doc/install#install).

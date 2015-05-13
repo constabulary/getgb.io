@@ -6,7 +6,7 @@
         <ul>
           {{ range $key, $value := $taxonomy }}
           <div class="col-md-3">
-          <p> {{ $key }} </p>
+          <p>{{ title $key }}</p>
                 <ul>
                 {{ range $value.Pages }}
                     <li hugo-nav="{{ .RelPermalink}}"><a href="{{ .RelPermalink}}"> {{ .LinkTitle }} </a> </li>
@@ -20,7 +20,7 @@
   </ul>
   
   <p class="text-center">Interested in using <b>gb</b>? Follow our <a href="/examples/getting-started/">Getting Started</a> guide.</p>
-  <p class="text-center">gb is developed by the <a href="https://github.com/constabulary">constabulary</a> | This website is proudly built with <a href="https://gohugo.io/">hugo</a></p>
+  <p class="text-center">gb is developed by the <a href="https://github.com/constabulary">constabulary</a> · Website design by <a href="https://www.ardanstudios.com/">ArdanStudios</a> · Proudly built with <a href="https://gohugo.io/">hugo</a></p>
   <p class="text-center"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">This site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
 </footer>
 

@@ -3,12 +3,9 @@ date        = "2014-05-07T11:27:27-04:00"
 title       = "Getting started"
 categories  = [ "examples" ]
 +++
-
-# Getting started
-
 This document is a guide to introduce people to the `gb` project structure. A `gb` project is conceptually a `$GOPATH` per project, but saying that doesn't really help explain how to set up a new project; hence this document.
 
-# Creating an empty project
+## Creating an empty project
 
 A `gb` project is defined as any directory that has a `src/` subdirectory. The simplest possible `gb` project would be
 
@@ -34,11 +31,11 @@ Source inside a `gb` project follows the same rules as the `go` tool, see the [W
 
 will build the small `helloworld` command.
 
-# Converting an existing project
+## Converting an existing project
 
 This section shows how to construct a `gb` project using existing code bases.
 
-## Simple example
+### Simple example
 
 In this example we'll create a `gb` project from the `github.com/pkg/sftp` codebase. 
 
@@ -104,7 +101,7 @@ And now it builds. Some things to note
 - The package name `all` matches all the packages inside your project's `src/` directory. It's a simple way to build everything, you can use other import paths and globs.
 - There is no way to build your vendored source, it will be built if required to build your code in the `src/` directory.
 
-## More complicated example
+### More complicated example
 
 For the second example we'll take a project that uses `godep` vendoring and convert it to be a `gb` project. First we'll need to setup a project and get the source
 
@@ -141,6 +138,6 @@ github.com/kelseyhightower/confd/resource/template
 github.com/kelseyhightower/confd
 ```
 
-# Wrapping up
+## Wrapping up
 
 Setting up, or converting code to a `gb` project is simple. Once you've done this you should check your `$PROJECT` directory into a source control. This includes any source you have copied from other projects into your `$PROJECT/vendor/src/` directory.

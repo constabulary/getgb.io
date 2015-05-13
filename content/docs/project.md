@@ -1,10 +1,8 @@
 +++
-title = "Project"
+title = "Projects"
 categories = [ "docs" ]
 date = "2001-01-09"
 +++
-# Projects
-
 gb commands operate on a project. A gb project is a workspace which contains all the source needed to build and test your library or application. 
 
 A gb project is a folder on disk that contains a sub directory named <code>src/</code>. That's it, no environment variables to set. For the rest of this document we'll refer to your gb project as <code>$PROJECT</code>.
