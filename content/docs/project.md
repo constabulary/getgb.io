@@ -33,7 +33,7 @@ Creating a `gb` project is as simple as creating a directory:
 
 <pre>% <b>mkdir -p $HOME/code/demo-project</b></pre>
 
-Obviously if you like to arrange your source code in another way, you'll choose different name for your project's directory. From now on we'll refer to `$HOME/demo-project` as `$PROJECT`. We call this the _project root_.
+Obviously if you like to arrange your source code in another way, you'll choose different name for your project's directory. From now on we'll refer to `$HOME/code/demo-project` as `$PROJECT`. We call this the _project root_.
 
 Now you have created a project, you will need to create a folder inside your project root directory to hold your source code:
 
