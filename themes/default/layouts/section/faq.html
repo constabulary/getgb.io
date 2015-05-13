@@ -4,13 +4,11 @@
 <div class="col-md-12">
 <h1>Frequently asked questions</h1>
 {{ range .Data.Pages }}
-<li>
-<a href="#{{ .Slug }}">{{ .Title }}</a>
-</li>
+<li><a href="#{{ .BaseFileName }}">{{ .Title }}</a></li>
 {{ end }}
 
 {{ range .Data.Pages }}
-<h2 id="{{.Slug}}">{{ .Title }}</h2>
+<h2 id="{{ .BaseFileName }}">{{ .Title }}</h2>
 {{ .Content }}
 {{ end }}
 </div><!-- col-md-12 -->
