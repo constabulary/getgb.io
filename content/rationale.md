@@ -3,11 +3,11 @@ title = "Design rationale"
 categories = [ "Design" ]
 date = "2001-01-01"
 +++
-## Reproducible builds
+## Reproducible Builds
 
 Go does not have reproducible builds because the import statement, which drives `go get` does not contain sufficient information to identify which revision of a package it should fetch.
 
-## Import path imprecision
+## Import Path Imprecision
 
 From the point of view of the language and its specification, the argument to the `import` statement, the import path, is opaque. Its interpretation is dependant on the tool processing the file. `go get` interprets the import path as a URL to fetch source code. The compiler interprets the import path as a location on disk where it will find a matching compiled package.
 
@@ -29,20 +29,20 @@ Vendoring code isolates the project from later changes in the repositories of co
 
 However, the `go` tool does not make vendoring easy. A repository fetched with `go get` will always be checked out in a matching directory on the local computer and so any other code included in that repository will be checked out relative to that location, _not_ in the location that the compiler requires.
 
-## Import rewriting
+## Import Rewriting
 
 To work around this limitation, the recommended approach is to rewrite the source code you depend on to a new import path, relative to your code, so that it will be checked out in the location that is expected by the compiler, albeit with a convoluted import path.
 
-## Why a new build tool?
+## Why A New Build Tool?
 
 It is clear that the reason Go developers do not have reproducible builds today stems from `go get`. Import rewriting and placing tags or version numbers in the package's import paths are work arounds layered on top of the limitations of `go get`.
 
 `gb` is a new build tool that does not wrap the `go` tool, nor does it use `$GOPATH`. `gb` replace the `go` tool's workspace metaphor with a project based approach which natively allows vendoring without the import rewriting work arounds mandated by `go get` and a `$GOPATH` workspace.
 
-## Read more
+## Read More
 
 You can watch the [original presentation](https://www.youtube.com/watch?v=c3dW80eO88I) on reproducible builds from GDG Berlin where `gb` was introduced. The [slides are also available](http://go-talks.appspot.com/github.com/davecheney/presentations/reproducible-builds.slide#1).
 
 ## Next Up
 
-[Read more about installing and using gb](/docs/install).
+[Read more about installing and using `gb`](/docs/install).
