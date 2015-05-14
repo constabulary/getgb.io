@@ -7,7 +7,7 @@ Erick Zelaya and [William Kennedy](https://twitter.com/goinggodotnet) of [Ardan 
 
 <!--more-->
 
-## New plugins coming
+## New Plugins Coming
 
 The [gb community on GitHub](https://github.com/constabulary/gb) are working on new plugins. We've seen proposals for
 
@@ -17,7 +17,7 @@ The [gb community on GitHub](https://github.com/constabulary/gb) are working on 
 
 Expect to see those landing soon.
 
-## Keeping up to date
+## Keeping Up To Date
 
-getgb.io now sports an [RSS feed](/news/index.xml) for the following the progress of gb. 
+getgb.io now sports an [RSS feed](/news/index.xml) for the following the progress of `gb`. 
 
