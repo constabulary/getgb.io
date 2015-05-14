@@ -2,19 +2,17 @@
 title = "gb-vendor"
 categories = [ "plugins" ]
 +++
-# gb-vendor
-
 `gb-vendor` is a simple `gb` plugin that wraps the `go get` command to make it easier to create your initial `gb` project.
 
-# Installation
+## Installation
 
 `gb-vendor` is not included with `gb`. Installation is currently via `go get`
 
     go get -u -v github.com/constabulary/gb-vendor
 
-# Usage
+## Usage
 
-## Simple Example
+### Simple Example
 
 In this example we'll create a `gb` project from the `github.com/pkg/sftp` codebase. 
 
