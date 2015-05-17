@@ -25,7 +25,7 @@ The source code that others have written, _their stuff_, goes in:
 
 `gb` does not use `go get` to manage a project's dependencies, the owner of the project should _copy_ any code that the project depends on into the `$PROJECT/vendor/src/` directory.
 
-`gb` projects can be retrieved using `go get`, but canot be built by the go tool as they do not follow the convention required by `go get`.
+`gb` projects can be retrieved using `go get`, but cannot be built by the go tool as they do not follow the convention required by `go get`.
 
 ## Creating A Project
 
