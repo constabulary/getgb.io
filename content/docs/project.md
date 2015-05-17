@@ -15,7 +15,7 @@ Inside a `gb` project, _your stuff_, the source code of your project goes in:
 
 <pre><b>$PROJECT/src/</b></pre>
 
-The source code that other's have written, _their stuff_, goes in:
+The source code that others have written, _their stuff_, goes in:
 
 <pre><b>$PROJECT/vendor/src/</b></pre>
 
