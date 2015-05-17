@@ -1,0 +1,22 @@
+{{ partial "header.html" . }}
+<div class="row">
+<div class="container">
+<div class="col-md-12">
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+</div><!-- col-md-12 -->
+    <div>
+        {{ if .PrevInSection }}
+	<div class="col-md-6">
+          <p>Previous: <a class="previous" href="{{.PrevInSection.Permalink}}"> {{.PrevInSection.Title}}</a></p>
+        {{ end }}
+	</div>
+	<div class="col-md-6">
+        {{ if .NextInSection }}
+          <p>Next: <a class="next" href="{{.NextInSection.Permalink}}"> {{.NextInSection.Title}}</a></p>
+        {{ end }}
+	</div>
+    </div>
+</div><!-- container -->
+</div><!-- row -->
+{{ partial "footer.html" . }}
