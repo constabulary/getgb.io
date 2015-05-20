@@ -42,7 +42,6 @@ The following flags are supported by `gb`. Note that these are flags to subcomma
 - `-R` - sets the base of the project root search path from the current working directory to the value supplied. Effectively `gb` changes working directory to this path before searching for the project root.
 - `-v` - increases verbosity, effectively lowering the output level from INFO to DEBUG.
 - `-q` - decreases verbosity, effectively raising the output level to ERROR. In a successful build, no output will be displayed.
-- `-goroot` - alters the path to the go toolchain in use, eg `gb build -goroot=$HOME/go1.4`.
 - `-f` - ignore cached packages if present, new packages built will overwrite any cached packages. This effectively disables incremental compilation.
 - `-F` - do not cache packages, cached packages will still be used for incremental compilation, `-f -F` is advised to disable the package caching system.
 - '-ldflags' - pass flags to linker, mainly used to set build information at link time. eg, `-ldflags "-X main.gitRevision aabbccdd"`
