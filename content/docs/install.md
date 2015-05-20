@@ -19,6 +19,10 @@ date = "2001-01-10"
 
 <pre><b>go get -u github.com/constabulary/gb/...</b></pre>
 
+## Multiple versions of Go
+
+Your `gb` installation is tightly coupled to the version of Go that built it. If you have multiple versions of Go installed, you will have to build a version of `gb` for each version installed.
+
 ## Next Up
 
 Now you've installed `gb`, move on to [setting up your project](/docs/project).
