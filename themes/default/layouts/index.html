@@ -36,7 +36,7 @@
       	<div class="container">
             <div class="col-lg-12">
               <h3>News</h3>
-    {{range first 5 (where .Data.Pages "Section" "news") }}
+    {{range first 3 (where .Data.Pages "Section" "news") }}
               <div class="summary">
                 <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
     {{ .Summary }}

@@ -6,9 +6,7 @@ categories = [ "plugins" ]
 
 ## Installation
 
-`gb-vendor` is not included with `gb`. Installation is currently via `go get`
-
-    go get -u -v github.com/constabulary/gb-vendor
+`gb-vendor` is included with `gb`. See [Installation](/docs/install).
 
 ## Usage
 
@@ -50,7 +48,7 @@ The build failed because the dependency, `github.com/kr/fs` was not found in the
 
 So we can use the `gb vendor` plugin to fetch the code for `github.com/kr/fs`:
 
-<pre>% <b>gb vendor github.com/kr/fs</b>
+<pre>% <b>gb vendor fetch github.com/kr/fs</b>
 % <b>tree -d</b>
 .
 ├── src
@@ -79,7 +77,7 @@ FATAL command "build" failed: failed to resolve package "github.com/pkg/sftp": c
 
 Nearly, there, just missing the `golang.org/x/crypto/ssh` package, again we'll use `gb vendor`.
 
-<pre>% <b>gb vendor golang.org/x/crypto/ssh</b>
+<pre>% <b>gb vendor fetch golang.org/x/crypto/ssh</b>
 % <b>tree -d</b>
 .
 ├── src
@@ -123,4 +121,4 @@ github.com/pkg/sftp/examples/streaming-write-benchmark
 
 ## Wrapping up
 
-Setting up, or converting code to a `gb` project is simple. Once you’ve done this, you should check your `$PROJECT` directory into a source control. This includes any source you have vendored from other projects into your `$PROJECT/vendor/src/` directory.
+Setting up, or converting code to a `gb` project is simple. Once you’ve done this, you should check your `$PROJECT` directory into a source control. This includes the contents of your `$PROJECT/vendor/` directory.
