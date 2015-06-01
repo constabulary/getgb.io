@@ -1,3 +1,9 @@
 baseurl = "http://getgb.io/"
 languageCode = "en-us"
 title = "A project based build tool for Go"
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"
+  series = "series"
+

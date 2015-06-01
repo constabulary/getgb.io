@@ -1,28 +1,44 @@
 
       <footer class="footer">
-  <ul>
-    {{ range $taxonomyname, $taxonomy := .Site.Taxonomies }}
+	<ul>
       <div class="row">
         <ul>
-          {{ range $key, $value := $taxonomy }}
           <div class="col-md-3">
-          <p>{{ title $key }}</p>
-                <ul>
-                {{ range $value.Pages }}
-                    <li hugo-nav="{{ .RelPermalink}}"><a href="{{ .RelPermalink}}"> {{ .LinkTitle }} </a> </li>
-                {{ end }}
-                </ul>
+          <p>Design</p>
+            <ul>
+               <li><a href="/about/">About gb</a></li>
+               <li><a href="/rationale/">Design rationale</a></li>
+               <li><a href="/theory/">Theory of operation</a></li>
+            </ul>
           </div>
-          {{ end }}
+          <div class="col-md-3">
+          <p>Documentation</p>
+            <ul>
+               <li><a href="/docs/install/">Installation</a></li>
+               <li><a href="/docs/project/">Projects</a></li>
+               <li><a href="/docs/usage/">Usage</a></li>
+          </div>
+          <div class="col-md-3">
+          <p>Examples</p>
+            <ul>
+               <li><a href="/examples/getting-started/">Getting Started</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+          <p>Plugins</p>
+            <ul>
+               <li><a href="/plugins/gb-env/">gb-env</a></li>
+               <li><a href="/plugins/gb-list/">gb-list</a></li>
+               <li><a href="/plugins/gb-vendor/">gb-list</a></li>
+            </ul>
+          </div>
         </ul>
       </div>
-    {{ end }}
   </ul>
-  
-  <p class="text-center">Interested in using <b>gb</b>? Follow our <a href="/examples/getting-started/">Getting Started</a> guide.</p>
-  <p class="text-center">gb is developed by the <a href="https://github.com/constabulary">constabulary</a> · Website design by <a href="https://www.ardanstudios.com/">ArdanStudios</a> · Proudly built with <a href="https://gohugo.io/">hugo</a></p>
-  <p class="text-center"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">This site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
-</footer>
+      <p class="text-center">Interested in using <b>gb</b>? Follow our <a href="/examples/getting-started/">Getting Started</a> guide.</p>
+      <p class="text-center">gb is developed by the <a href="https://github.com/constabulary">constabulary</a> · Website design by <a href="https://www.ardanstudios.com/">ArdanStudios</a> · Proudly built with <a href="https://gohugo.io/">hugo</a></p>
+      <p class="text-center"><a rel="license" href="http://creativecommons.org/licenses/by/4.0/">This site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+      </footer>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
