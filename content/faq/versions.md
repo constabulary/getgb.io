@@ -1,9 +1,9 @@
 +++
 title = "How can I track a vendor package's git version?"
-date = "2015-05-12"
+date = "2015-06-04"
 +++
-At the moment the best way to do this is probably to use git submodules or subversions (depending on your preference). 
+`gb` is only concerned with building code inside your project, how gets there and how that code is updated, is not `gb`'s concern.
 
-`gb` doesn't mandate that you do this, in fact `gb` doesn't mandate which DVCS you use (although obviously not using source control would be short sighted). 
+With that said, the [`gb-vendor`](http://godoc.org/github.com/constabulary/gb/cmd/gb-vendor) plugin can help fetch and manage vendored code. 
 
-In the future the [`gb-vendor`](/docs/gb-vendor) plugin may be able to help here, and it may be able to emit a file which records the revision of code vendored.
+[Read more about `gb-vendor`](http://getgb.io/news/gb-vendor-2015-05-26/).
