@@ -50,7 +50,7 @@ golang.org/x/crypto/ssh/agent
 github.com/pkg/sftp
 cmd/gsftp</pre>
 
-A this project contains a command package, `cmd/gsftp`, which is built and copied to `$PROJECT/bin/gsftp`.
+As this project contains a command package, `cmd/gsftp`, which is built and copied to `$PROJECT/bin/gsftp`.
 
 _note:_ your commands don't need to live in `$PROJECT/src/cmd`, but you cannot place source at the root of `$PROJECT/src` because that [package would not have a name](http://getgb.io/faq/#cannot-build-src-root).
 
@@ -60,6 +60,6 @@ github.com/kr/fs        https://github.com/kr/fs        master  2788f0dbd16903de
 golang.org/x/crypto/ssh https://go.googlesource.com/crypto/ssh  master  c10c31b5e94b6f7a0283272dc2bb27163dcea24b
 github.com/pkg/sftp     https://github.com/pkg/sftp     master  f234c3c6540c0358b1802f7fd90c0879af9232eb</pre>
 
-## Next up
+## Next Up
 
-Read more about [getting started](/exmaples/getting-started/) or setting up a [gb project](/docs/project/).
+Read more about [getting started](/examples/getting-started/) or setting up a [gb project](/docs/project/).

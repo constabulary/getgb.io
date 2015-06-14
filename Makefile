@@ -5,4 +5,4 @@ build:
 	hugo -t default
 
 rsync: build
-	rsync -avz --delete public/* getgb.io:/export/sites/getgb.io/default/htdocs/
+	rsync -avz --delete public/* dave.cheney.net:/export/sites/getgb.io/default/htdocs/

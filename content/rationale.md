@@ -5,7 +5,7 @@ date = "2001-01-01"
 +++
 ## Reproducible Builds
 
-Go does not have reproducible builds because the import statement, which drives `go get` does not contain sufficient information to identify which revision of a package it should fetch.
+Go does not have reproducible builds because the import statement, which drives `go get`, does not contain sufficient information to identify which revision of a package it should fetch.
 
 ## Import Path Imprecision
 
