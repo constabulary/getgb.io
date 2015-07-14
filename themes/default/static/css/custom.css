@@ -37,6 +37,9 @@ h1 {
 .navbar-toggle .icon-bar {
     background: none repeat scroll 0 0 #FFFFFF;
 }
+.navbar-brand {
+  padding: 13px 15px;
+}
 .jumbotron {
 	background: url(../images/geometry.png);
 	padding: 20px 0 40px;
