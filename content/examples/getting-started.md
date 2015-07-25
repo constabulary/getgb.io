@@ -17,7 +17,7 @@ A `gb` project is defined as any directory that has a `src/` subdirectory. The s
 
 `~/project` is therefore a `gb` project.
 
-Source inside a `gb` project follows the same rules as the go tool, see the [Workspaces section of the Go getting started document](https://golang.org/doc/code.html#Workspaces). All Go code is placed inside packages, and packages are subdirectories inside the project's `src/` directory.
+Source inside a `gb` project follows the same rules as the go tool; see the [Workspaces section of the Go getting started document](https://golang.org/doc/code.html#Workspaces). All Go code is placed inside packages, and packages are subdirectories inside the project's `src/` directory.
 
 Let's create a `helloworld` project:
 
@@ -62,18 +62,18 @@ cmd/helloworld
 
 # Converting An Existing Project
 
-This section shows how to construct a `gb` project using existing code bases.
+This section shows how to construct a `gb` project using an existing code base.
 
 ## Simple Example
 
-In this example we'll create a `gb` project from the `github.com/pkg/sftp` codebase. 
+In this example we'll create a `gb` project from the `github.com/pkg/sftp` code base.
 
 First, create a project:
 
 <pre>% <b>mkdir -p ~/devel/sftp</b>
 % <b>cd ~/devel/sftp</b></pre>
 
-Next, checkout `github.com/pkg/sftp` to the path it expects:
+Next, check out `github.com/pkg/sftp` to the path it expects:
 
 <pre>% <b>mkdir -p src/github.com/pkg/sftp</b>
 % <b>git clone https://github.com/pkg/sftp src/github.com/pkg/sftp</b>
@@ -98,7 +98,7 @@ FATAL command "build" failed: failed to resolve package "github.com/pkg/sftp": c
        /home/dfc/devel/sftp/src/github.com/kr/fs (from $GOPATH)
        /home/dfc/devel/sftp/vendor/src/github.com/kr/fs</pre>
 
-The build failed because the dependency, `github.com/kr/fs` was not found in the project, which was expected (ignore the message about `$GOPATH` this is a side effect of reusing the `go/build` package for dependency resolution).
+The build failed because the dependency `github.com/kr/fs` was not found in the project, which was expected. (Ignore the message about `$GOPATH`; this is a side effect of reusing the `go/build` package for dependency resolution.)
 
 We must fetch these dependencies and place them in the `$PROJECT/vendor/src` directory:
 
@@ -138,7 +138,7 @@ FATAL command "build" failed: failed to resolve package "github.com/pkg/sftp": c
         /home/dfc/devel/demo/vendor/src/golang.org/x/crypto/ssh
 </pre>
 
-Nearly there, just missing the `golang.org/x/crypto/ssh` package:
+We're nearly there, now just missing the `golang.org/x/crypto/ssh` package:
 
 <pre>% <b>mkdir -p vendor/src/golang.org/x/crypto</b><
 % <b>git clone https://github.com/golang/crypto vendor/src/golang.org/x/crypto</b>
@@ -178,12 +178,12 @@ And now it builds.
 
 Notes:  
 
-- The package name `all` matches all the packages inside your project's `src/` directory. It's a simple way to build everything, you can use other import paths and globs.
-- There is no way to build your vendored source, it will be built if required to build your code in the `src/` directory.
+- The package alias `all` matches all the packages inside your project's `src/` directory. It's a simple way to build everything. You can use other import paths and globs.
+- There is no way to build your vendored source; it will be built if required to build your code in the `src/` directory.
 
 ## A More Complicated Example
 
-For the second example we'll take a project that uses `godep` vendoring and convert it to be a `gb` project. First, we'll need to setup a project and get the source:
+For the second example we'll take a project that uses `godep` vendoring and convert it to be a `gb` project. First, we'll need to set up a project and get the source:
 
 <pre>% <b>mkdir -p ~/devel/confd</b>
 % <b>cd ~/devel/confd</b>
@@ -290,4 +290,4 @@ github.com/kelseyhightower/confd
 
 ## Wrapping up
 
-Setting up, or converting code to a `gb` project is simple. Once you've done this, you should check your `$PROJECT` directory into a source control. This includes any source you have copied from other projects into your `$PROJECT/vendor/src/` directory.
+Setting up or converting code to a `gb` project is simple. Once you've done this, you should check your `$PROJECT` directory into a source control repository. This includes any source you have copied from other projects into your `$PROJECT/vendor/src/` directory.
