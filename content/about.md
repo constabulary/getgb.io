@@ -7,7 +7,7 @@ date = "2001-01-02"
 
 [Read more about the rationale for `gb`](/rationale).
 
-## Project Based
+## Project-Based
 
 `gb` operates on the concept of a project. A `gb` project is a workspace for all the Go code that is required to build your project. 
 
