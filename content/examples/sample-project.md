@@ -5,14 +5,14 @@ categories  = [ "examples" ]
 +++
 A picture is worth a thousand words, so let's look at a sample `gb` project.
 
-[The sample repository is here, github.com/constabulary/example-gsftp](https://github.com/constabulary/example-gsftp).
+The sample repository is [here: github.com/constabulary/example-gsftp](https://github.com/constabulary/example-gsftp).
 
-To fetch this project, clone it. You can check out the code anywhere that you like, there is no requirement to check it out inside your <code>$GOPATH</code>.
+Clone this project, checking out the code anywhere that you like. There is no requirement to check it out inside your <code>$GOPATH</code>.
 <pre>% <b>cd $HOME/devel</b>
 % <b>git clone https://github.com/constabulary/example-gsftp</b>
 Cloning into 'example-gsftp'...</pre>
 
-Let's have a look t the project on disk
+Let's have a look at the project on disk:
 <pre>% <b>cd example-gsftp</b>
 % <b>tree -d $(pwd)</b>
 /home/dfc/devel/example-gsftp
@@ -50,11 +50,11 @@ golang.org/x/crypto/ssh/agent
 github.com/pkg/sftp
 cmd/gsftp</pre>
 
-As this project contains a command package, `cmd/gsftp`, which is built and copied to `$PROJECT/bin/gsftp`.
+This project contains a "command" package, `cmd/gsftp`, which is built and copied to `$PROJECT/bin/gsftp`.
 
-_note:_ your commands don't need to live in `$PROJECT/src/cmd`, but you cannot place source at the root of `$PROJECT/src` because that [package would not have a name](http://getgb.io/faq/#cannot-build-src-root).
+_Note:_ Your commands don't need to live in `$PROJECT/src/cmd`, but you cannot place source at the root of `$PROJECT/src` because [that package would not have a name](http://getgb.io/faq/#cannot-build-src-root).
 
-This project uses `gb-vendor` to manage it's dependencies, so let's have a look at what has been vendored.
+This project uses [`gb-vendor`](/news/gb-vendor-2015-05-26/) to manage its dependencies, so let's have a look at what has been vendored.
 <pre>% <b>gb vendor list</b>
 github.com/kr/fs        https://github.com/kr/fs        master  2788f0dbd16903de03cb8186e5c7d97b69ad387b
 golang.org/x/crypto/ssh https://go.googlesource.com/crypto/ssh  master  c10c31b5e94b6f7a0283272dc2bb27163dcea24b
