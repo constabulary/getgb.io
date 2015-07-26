@@ -6,7 +6,7 @@ The short answer is yes: you can vendor source from one `gb` project to another&
 
 Vendoring dependencies is similar; you'll need to merge the contents of your libraries `$PROJECT/vendor/src/` into the downstream's vendor directory.
 
-Unfortunately `gb` cannot help you with this, as Go projects don't have any concept of versions; there is no way you can look at the source of a Go package and ask it "what version are you" (assuming something like [SemVer](http://semver.org/).
+Unfortunately `gb` cannot help you with this, as Go projects don't have any concept of versions; there is no way you can look at the source of a Go package and ask it "What version are you?"
 
 Now you might have commit hashes for both copies of a particular package you are vendoring, and you might be able to take those commit hashes and look them up in the source repository and say, "Hash `abced` is newer than hash `ed3fc`."
 
