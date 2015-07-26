@@ -19,4 +19,4 @@ Second, passing `gb` a relative path to the package&mdash;i.e., `gb build .` or 
 % <b>gb build ..</b> # build the package directly above this directory
 FATAL command "build" failed: "/home/dfc/devel/demo3/src" is not a package</pre>
 
-To avoid this situation, we recommend that all Go code inside `gb` projects be placed in _subdirectories_ of `$PROJECT/src/` and not in files within that directory itself.
+To avoid this situation, we recommend that all Go code inside `gb` projects be placed in _subdirectories_ of `$PROJECT/src/`.
