@@ -45,8 +45,3 @@ The following flags are supported by `gb`. Note that these are flags to subcomma
 - `-f` - ignore cached packages if present, new packages built will overwrite any cached packages. This effectively disables incremental compilation.
 - `-F` - do not cache packages, cached packages will still be used for incremental compilation, `-f -F` is advised to disable the package caching system.
 - '-ldflags' - pass flags to linker, mainly used to set build information at link time. eg, `-ldflags "-X main.gitRevision aabbccdd"`
-
-## Next Up
-
-`gb` supports git style plugins which can be used to extend its functionality. [Read more about plugins](/plugins).
-
