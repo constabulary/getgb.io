@@ -89,7 +89,7 @@ Hello gb
 
 ## Source Control Repository
 
-Now that you've created a `gb` project, you should share that project with others by checking the entire contents of `$PROJECT` into the source control repository of your choosing. This includes any source you have copied from other projects into your `$PROJECT/vendor/src/` directory.
+Now that you've created a `gb` project, you should share that project with others by checking the entire contents of `$PROJECT` into the source control repository of your choosing. This includes any source you have copied from other projects into your `$PROJECT/vendor/src/` directory. You don't need to track `$PROJECT/pkg` nor `$PROJECT/bin`.
 
 ## Next Up
 
