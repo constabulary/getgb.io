@@ -5,7 +5,7 @@ date = "2001-01-10"
 +++
 ## Prerequisites
 
-`gb` is compatible with Go 1.4. If you haven't installed Go yet, we recommend using the binary installers available from the [official Go website](http://golang.org/doc/install#install).
+`gb` is compatible with Go 1.4 and later. If you haven't installed Go yet, we recommend using the binary installers available from the [official Go website](http://golang.org/doc/install#install).
 
 ## Installation
 
