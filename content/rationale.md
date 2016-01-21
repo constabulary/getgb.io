@@ -7,7 +7,7 @@ date = "2001-01-01"
 
 Go does not have reproducible builds because the `import statement`&mdash;which drives `go get`&mdash;does not contain sufficient information to identify which revision of a package it should fetch.
 
-## Import Path Imprecision
+## <a name="import-path-imprecision"></a>Import Path Imprecision
 
 From the point of view of the language and its specification, the argument to the `import` statement&mdash;the import path&mdash;is opaque. Its interpretation is dependant on the tool processing the file. `go get` interprets the import path as a URL to fetch source code. The compiler interprets the import path as a location on disk where it will find a matching compiled package.
 
