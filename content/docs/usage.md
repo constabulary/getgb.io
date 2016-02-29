@@ -25,7 +25,7 @@ Arguments to `gb` subcommands are package import paths or globs relative to the 
 - `gb build github.com/a/b` - builds `github.com/a/b`
 - `gb build github.com/a/b/...` - builds `github.com/a/b` and all packages below it
 - `gb build .../cmd/...` - builds anything that matches `.*/cmd/.*`
-- `gb build` - shorthand for `go build ...`, depending on the current working directory this will be the entire project, or a subtree.
+- `gb build` - shorthand for `gb build ...`, depending on the current working directory this will be the entire project, or a subtree.
 
 Other subcommands, like `test`, `vendor`, etc follow the same rule.
 
