@@ -1,13 +1,14 @@
 +++
-title       = "Automatically download gb project dependencies"
+title       = "Automatically fetch project dependencies"
+categories = [ "docs" ]
 date = "2001-01-01"
 +++
 
-_NOTE: This feature is currently __experimental__. Please try it out and [report any issues](https://github.com/constabulary/gb/issues/new)._
+_NOTE: This feature is currently **experimental**. Please try it out and [report any issues](https://github.com/constabulary/gb/issues/new)._
 
 gb can optionally download released versions of your project's dependencies.
 
-This feature is only enabled if the dependency file, `$PROJECT/depfile` is present, and the lists explicitly the dependencys' required version. If the `depfile` is updated to reflect a version which is not present locally, that will be downloaded the next time gb is run.
+This feature is only enabled if the dependency file, `$PROJECT/depfile` is present, and the lists explicitly the required version of the depdendency. If the `depfile` is updated to reflect a version which is not present locally, that will be downloaded the next time gb is run.
 
 ## Backstory
 gb cares about reliable builds, a lot. Giving Go developers the tools they need to achieve repeatable builds was the motivation for developing gb. The main way gb does this is via the `$PROJECT/vendor/src` directory. If you need a _specific_ revision of a dependency, you should vendor it to `$PROJECT/vendor/src`. 
@@ -16,19 +17,19 @@ A bit later `gb-vendor` came along when it was clear that users wanted tooling t
 
 To be clear, the answer for how to get the most reliable builds with gb is always to copy your dependencies into `$PROJECT/vendor/src`. But it also clear that not everyone is comfortable with having actual copies of their dependencies source in their project's tree; they would rather have a file that explains where to get those dependencies on request.
 
-## Downloading of missing dependencies
+## Fetch missing dependencies
 
-If a dependency is listed in the `depfile` but is not present in the users' cache, gb will attempt to fetch it.
+If a dependency is listed in `$PROJECT/depfile` but is not present in the users' cache, gb will attempt to fetch it.
 
 _NOTE: currently only dependencies hosted on github are fetched. Vanity import paths, bitbucket, private git repos, etc. are not yet supported._
  
-## `depfile` syntax
+<h2 id="syntax"><code>depfile</code> syntax</h2>
 
 A valid `depfile` lives at `$PROJECT/depfile`. It contains one or more lines of text. The format of the line is
 
      name key=value [key=value]...
 
-`name` is an import path representing a remote repository. The only supported `key` is `version`, a valid `version` value is any SemVer 2.0 value. This SemVer tag must match a release tag in the format
+`name` is an import path representing a remote repository. The only supported `key` is `version`, a valid `version` value is any SemVer 2.0.0 value. This version must match a release tag in the format
 
     v<semver>
 
@@ -38,8 +39,8 @@ For example:
 
 Will fetch the github release tagged `v1.1.0`.
 
-## Sample `depfile`
-Elements can be seperated by whitespace. Lines that do not begin with a letter or number are ignored. This provides a simple mechanism for commentary.
+## Sample `$PROJECT/depfile`
+Elements can be separated by whitespace. Lines that do not begin with a letter or number are ignored. This provides a simple mechanism for commentary.
 ```
 # some comment
 github.com/pkg/profile version=1.1.0
