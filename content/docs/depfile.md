@@ -31,7 +31,7 @@ A valid `depfile` lives at `$PROJECT/depfile`. It contains one or more lines of 
 
 `name` is an import path representing a remote repository. The only supported `key` is `version`, a valid `version` value is any SemVer 2.0.0 value. This version must match a release tag in the format
 
-    v<semver>
+    v<semver version>
 
 For example:
 
@@ -62,7 +62,7 @@ When `$PROJECT/depfile` is present, the per user package cache
 
 - `$HOME/.gb/cache/`
 
-is appended to the end of the search list.  If a package could not be found, the cache will be searched, and if the package is not found, an attempt to fetch it from it's upstream (as defined by `gb vendor fetch`, which itself is defined by `go get`'s rules) is made, and the cache searched again.
+is appended to the end of the search list.  If a package could not be found, the cache will be searched, and if the package is not found, an attempt to fetch it from its upstream (as defined by `gb vendor fetch`, which itself is defined by `go get`'s rules) is made, and the cache searched again.
 
 ## Package cache
 gb stores a cache of packages at `$HOME/.gb/cache`.
