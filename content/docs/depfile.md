@@ -29,15 +29,14 @@ A valid `depfile` lives at `$PROJECT/depfile`. It contains one or more lines of 
 
      name key=value [key=value]...
 
-`name` is an import path representing a remote repository. The only supported `key` is `version`, a valid `version` value is any SemVer 2.0.0 value. This version must match a release tag in the format
-
-    v<semver version>
-
-For example:
-
-     github.com/pkg/profile version=1.1.0
-
-Will fetch the github release tagged `v1.1.0`.
+- `name` is an import path representing a remote repository.
+- `key` is one of the following:
+   - `version`: a valid `version` value is any SemVer 2.0.0 version string. This SemVer tag must match a release tag in the format
+      <pre>v&lt;semver></pre>
+      For example:
+      <pre>github.com/pkg/profile version=1.1.0</pre>
+      Will fetch the `github.com/pkg/profile` release tagged `v1.1.0`.
+   - `tag`: any remote tag. A `tag` value is not required to confirm to SemVer 2.0.0, however gb will assign no semantic meaning to the tag.
 
 ## Sample `$PROJECT/depfile`
 Elements can be separated by whitespace. Lines that do not begin with a letter or number are ignored. This provides a simple mechanism for commentary.
