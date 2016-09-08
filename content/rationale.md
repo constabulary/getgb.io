@@ -9,7 +9,7 @@ Go does not have reproducible builds because the `import statement`&mdash;which 
 
 ## <a name="import-path-imprecision"></a>Import Path Imprecision
 
-From the point of view of the language and its specification, the argument to the `import` statement&mdash;the import path&mdash;is opaque. Its interpretation is dependant on the tool processing the file. `go get` interprets the import path as a URL to fetch source code. The compiler interprets the import path as a location on disk where it will find a matching compiled package.
+From the point of view of the language and its specification, the argument to the `import` statement&mdash;the import path&mdash;is opaque. Its interpretation is dependent on the tool processing the file. `go get` interprets the import path as a URL to fetch source code. The compiler interprets the import path as a location on disk where it will find a matching compiled package.
 
 Note: The import path of a package is _not_ the package's name (although convention dictates that they match). The former is dictated by the path on disk where the source files are found. The latter comes from the `package` declaration at the top of the `.go` file. 
 
