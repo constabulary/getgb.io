@@ -39,6 +39,6 @@ github.com/pkg/profile version=1.1.0
 github.com/pkg/errors version=0.7.0
 ```
 
-Please leave feadback on this feature [via the issue tracker](https://github.com/constabulary/gb/issues/new).
+Please leave feedback on this feature [via the issue tracker](https://github.com/constabulary/gb/issues/new).
 
 For more details, please consult the 0.4.3 release notes [available on Github](https://github.com/constabulary/gb/releases/tag/v0.4.3).

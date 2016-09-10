@@ -8,7 +8,7 @@ _NOTE: This feature is currently **experimental**. Please try it out and [report
 
 gb can optionally download released versions of your project's dependencies.
 
-This feature is only enabled if the dependency file, `$PROJECT/depfile` is present, and the lists explicitly the required version of the depdendency. If the `depfile` is updated to reflect a version which is not present locally, that will be downloaded the next time gb is run.
+This feature is only enabled if the dependency file, `$PROJECT/depfile` is present, and the lists explicitly the required version of the dependency. If the `depfile` is updated to reflect a version which is not present locally, that will be downloaded the next time gb is run.
 
 ## Backstory
 gb cares about reliable builds, a lot. Giving Go developers the tools they need to achieve repeatable builds was the motivation for developing gb. The main way gb does this is via the `$PROJECT/vendor/src` directory. If you need a _specific_ revision of a dependency, you should vendor it to `$PROJECT/vendor/src`. 
